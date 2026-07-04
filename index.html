@@ -1398,8 +1398,9 @@
     pointerRotation += fullSpins * 360 + ((landingDeg - (pointerRotation % 360)) + 360) % 360;
 
     const spinDurationMs = fastMode ? 1100 : 3600;
+    pointerGroup.style.transformOrigin = '135px 135px';
     pointerGroup.style.transition = `transform ${spinDurationMs}ms cubic-bezier(.15,.7,.12,1)`;
-    pointerGroup.setAttribute('transform', `rotate(${pointerRotation} 135 135)`);
+    pointerGroup.style.transform = `rotate(${pointerRotation}deg)`;
     ensureAudio();
     playSpinTicks(spinDurationMs);
 
