@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <title>GRADER — демо апгрейдер (не на деньги)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,8 +28,8 @@
     --rarity-legendary: #ff9f43;
   }
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth; touch-action:manipulation;}
   body{
     margin:0;
     background:
@@ -38,6 +38,9 @@
     color:var(--text);
     font-family:'Inter', sans-serif;
     -webkit-font-smoothing:antialiased;
+    padding-left:env(safe-area-inset-left);
+    padding-right:env(safe-area-inset-right);
+    overflow-x:hidden;
   }
 
   h1,h2,h3,.mono{ font-family:'Chakra Petch', sans-serif; }
@@ -77,11 +80,14 @@
   /* ===== TABS ===== */
   .tabs{
     display:flex; gap:6px; margin-top:32px; border-bottom:1px solid var(--line);
+    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
   }
+  .tabs::-webkit-scrollbar{ display:none; }
   .tab-btn{
     font-family:'Chakra Petch', sans-serif; font-size:13.5px; font-weight:600;
     background:none; border:none; color:var(--muted); padding:12px 18px; cursor:pointer;
     border-bottom:2px solid transparent; letter-spacing:.02em; transition:color .15s;
+    white-space:nowrap; flex:0 0 auto;
   }
   .tab-btn:hover{ color:var(--text); }
   .tab-btn.active{ color:var(--cyan); border-bottom-color:var(--cyan); }
@@ -142,7 +148,8 @@
   }
 
   .wheel-col{ display:flex; flex-direction:column; align-items:center; gap:16px; }
-  .wheel-shell{ width:270px; height:270px; }
+  .wheel-shell{ width:min(270px, 100%); max-width:270px; aspect-ratio:1/1; margin:0 auto; }
+  .wheel-shell svg{ width:100%; height:100%; display:block; }
   .wheel-readout{ font-family:'Chakra Petch', sans-serif; font-size:13px; color:var(--muted); text-align:center; }
   .wheel-readout b{ color:var(--cyan); }
 
@@ -151,6 +158,7 @@
     font-family:'Chakra Petch', sans-serif; font-size:11.5px; font-weight:600;
     background:var(--panel-2); border:1px solid var(--line); color:var(--muted);
     border-radius:20px; padding:7px 14px; cursor:pointer; transition:border-color .15s, color .15s;
+    min-height:40px;
   }
   .speed-toggle:hover{ border-color:var(--cyan); color:var(--text); }
   .speed-toggle.fast{ border-color:var(--orange); color:var(--orange); }
@@ -209,6 +217,60 @@
 
   @media (max-width:720px){
     .machine{ grid-template-columns:1fr; }
+  }
+
+  @media (max-width:600px){
+    .wrap{ padding:0 16px; }
+    header.top{ flex-direction:column; align-items:flex-start; gap:12px; padding:16px 0 6px; }
+    .header-stats{ width:100%; }
+    .stat-chip{ font-size:12.5px; padding:8px 12px; }
+    .hero{ padding:22px 0 4px; }
+    .hero h1{ font-size:clamp(24px, 7vw, 32px); max-width:none; }
+    .hero p{ font-size:14px; }
+
+    .tabs{ margin-top:20px; padding-bottom:2px; }
+    .tab-btn{ padding:11px 14px; font-size:13px; }
+
+    .item-grid{ grid-template-columns:repeat(auto-fill, minmax(96px,1fr)); gap:9px; }
+    .item-card{ padding:11px 7px 9px; }
+    .item-card .icon-box{ width:52px; height:52px; }
+    .item-card .icon-box svg{ width:38px; height:38px; }
+
+    .machine{ padding:18px 14px; gap:22px; }
+    .wheel-shell{ width:min(220px, 80vw); }
+    .wheel-readout{ font-size:12px; }
+    .speed-toggle{ font-size:11px; padding:6px 12px; }
+
+    .trade-row{ flex-wrap:wrap; }
+    .trade-box{ min-width:calc(50% - 14px); }
+    .trade-arrow{ flex-basis:100%; text-align:center; order:1; }
+
+    .chance-presets{ gap:6px; }
+    .chance-btn{ padding:13px 0; font-size:13px; min-height:44px; }
+
+    .spin-btn, .prayer-btn, .auth-submit, .profile-logout-btn, .case-continue-btn{
+      min-height:48px;
+    }
+
+    .modal-overlay{ padding:16px 10px; align-items:center; }
+    .modal-box{ padding:18px 16px; border-radius:14px; max-height:88vh; overflow-y:auto; }
+    .modal-title{ font-size:15px; }
+    .case-strip-track .item-card{ width:76px; height:88px; }
+    .case-strip-frame{ height:98px; }
+
+    .auth-box{ padding:26px 20px; max-width:100%; }
+    .auth-input{ font-size:16px; padding:12px 13px; } /* 16px avoids iOS auto-zoom on focus */
+
+    .prayer-box, .profile-box{ padding:26px 18px; max-width:100%; }
+    .profile-stats{ gap:14px; }
+
+    footer{ font-size:11.5px; margin:48px 0 32px; }
+  }
+
+  @media (max-width:380px){
+    .item-grid{ grid-template-columns:repeat(auto-fill, minmax(84px,1fr)); }
+    .stat-chip{ font-size:11.5px; padding:7px 10px; }
+    .chance-btn{ font-size:12px; }
   }
 
   /* ===== MODAL: target picker ===== */
@@ -313,10 +375,12 @@
       radial-gradient(ellipse 900px 500px at 50% -10%, #182035 0%, transparent 60%),
       var(--bg);
     display:flex; align-items:center; justify-content:center; padding:24px;
+    overflow-y:auto;
   }
   .auth-box{
     width:100%; max-width:380px; background:var(--panel); border:1px solid var(--line);
     border-radius:18px; padding:32px 28px; display:flex; flex-direction:column; gap:16px;
+    margin:auto;
   }
   .auth-logo{ justify-content:center; margin-bottom:4px; }
   .auth-tabs{ display:flex; gap:6px; background:var(--panel-2); border-radius:10px; padding:4px; }
@@ -375,11 +439,6 @@
     color:var(--muted); font-size:12.5px; line-height:1.7;
   }
   footer b{ color:var(--text); }
-
-  @media (max-width:600px){
-    header.top{ flex-direction:column; align-items:flex-start; gap:14px; }
-    .machine{ padding:20px; }
-  }
 </style>
 </head>
 <body>
@@ -602,6 +661,11 @@
 
 <script>
 (function(){
+  // Prevents the page behind a modal from scrolling on mobile while the
+  // modal itself scrolls — avoids the common "double scroll" glitch on touch.
+  function lockBodyScroll(){ document.body.style.overflow = 'hidden'; }
+  function unlockBodyScroll(){ document.body.style.overflow = ''; }
+
   // ===== Sound engine (fully synthesized — no audio files, nothing external) =====
   const audioCtx = (typeof window !== 'undefined' && (window.AudioContext || window.webkitAudioContext))
     ? new (window.AudioContext || window.webkitAudioContext)()
@@ -1282,9 +1346,11 @@
       modalGrid.appendChild(div);
     });
     targetModal.classList.add('open');
+    lockBodyScroll();
   }
   function closeTargetModal(){
     targetModal.classList.remove('open');
+    unlockBodyScroll();
   }
   modalClose.addEventListener('click', closeTargetModal);
   targetModal.addEventListener('click', (e)=>{
@@ -1396,6 +1462,7 @@
     caseContinueBtn.style.display = 'none';
     caseModalClose.disabled = true;
     caseModal.classList.add('open');
+    lockBodyScroll();
 
     // The actual prize, decided up front — common items are far more likely
     // than the rare uncommon "big win" inside the consolation case itself.
@@ -1440,6 +1507,7 @@
         inventoryData.push(prize);
         if(selectedStakeIndex === -1) selectedStakeIndex = inventoryData.length - 1;
         caseModal.classList.remove('open');
+        unlockBodyScroll();
         resultLine.textContent = `Утешительный кейс принёс «${prize.name}» (${fmtPrice(prize.price)}).`;
         renderAll();
       };
