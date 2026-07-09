@@ -8,24 +8,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0d0f14;
-    --bg-2: #131620;
-    --panel: #171a24;
-    --panel-2: #1e2230;
-    --line: #2a2f3d;
-    --text: #eef1f0;
-    --muted: #8b93a3;
-    --cyan: #5eead4;
-    --blue: #38bdf8;
-    --orange: #fb923c;
+    --bg: #14100d;
+    --bg-2: #1c1611;
+    --panel: #211a14;
+    --panel-2: #2a2119;
+    --line: #3d2f22;
+    --text: #fff3e6;
+    --muted: #c2a892;
+    --cyan: #2dd4bf;
+    --blue: #ff8c3a;
+    --orange: #ffb020;
     --red: #f8617a;
     --green: #4ade80;
-    --grad-blue: linear-gradient(135deg, #5eead4, #38bdf8);
-    --rarity-common: #8a93a3;
-    --rarity-uncommon: #4b9fd6;
-    --rarity-rare: #7c6bf0;
-    --rarity-mythic: #c14be0;
-    --rarity-legendary: #ff9f43;
+    --grad-blue: linear-gradient(135deg, #ffb020, #ff6b35);
+    --rarity-common: #a89178;
+    --rarity-uncommon: #2dd4bf;
+    --rarity-rare: #ff8c3a;
+    --rarity-mythic: #ff5c8a;
+    --rarity-legendary: #ffd23f;
   }
 
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
@@ -33,7 +33,7 @@
   body{
     margin:0;
     background:
-      radial-gradient(ellipse 900px 500px at 50% -10%, #182035 0%, transparent 60%),
+      radial-gradient(ellipse 900px 500px at 50% -10%, #2e1e10 0%, transparent 60%),
       var(--bg);
     color:var(--text);
     font-family:'Inter', sans-serif;
@@ -372,7 +372,7 @@
   .auth-overlay{
     position:fixed; inset:0; z-index:300;
     background:
-      radial-gradient(ellipse 900px 500px at 50% -10%, #182035 0%, transparent 60%),
+      radial-gradient(ellipse 900px 500px at 50% -10%, #2e1e10 0%, transparent 60%),
       var(--bg);
     display:flex; align-items:center; justify-content:center; padding:24px;
     overflow-y:auto;
@@ -434,6 +434,24 @@
   .profile-logout-btn:hover{ border-color:var(--red); }
   .profile-note{ font-size:11.5px; color:var(--muted); line-height:1.5; margin:0; }
 
+  /* ===== SUMMER SHOWCASE ===== */
+  .summer-tab{
+    background:linear-gradient(90deg, rgba(255,176,32,.14), rgba(45,212,191,.14));
+    border-radius:8px 8px 0 0;
+  }
+  .summer-label{ color:var(--blue); }
+  .summer-intro{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:0 0 18px; max-width:64ch; }
+  .summer-card{
+    position:relative; overflow:hidden;
+  }
+  .summer-card::before{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(135deg, rgba(255,176,32,.1), rgba(45,212,191,.1));
+    pointer-events:none;
+  }
+  .summer-card .icon-box{ position:relative; z-index:1; }
+  .summer-card .name, .summer-card .tier, .summer-card .price{ position:relative; z-index:1; }
+
   footer{
     margin:70px 0 46px; padding-top:22px; border-top:1px solid var(--line);
     color:var(--muted); font-size:12.5px; line-height:1.7;
@@ -486,7 +504,7 @@
   </header>
 
   <section class="hero">
-    <p class="eyebrow">Симулятор апгрейда · не азартная игра</p>
+    <p class="eyebrow">Симулятор апгрейда · летнее обновление 🍉</p>
     <h1>Крути, продавай, покупай — всё понарошку.</h1>
     <p>Три раздела: апгрейд предметов на колесе, инвентарь с продажей за кредиты и магазин, где на эти кредиты можно купить новые предметы для следующего апгрейда.</p>
   </section>
@@ -497,6 +515,7 @@
     <button class="tab-btn" data-tab="shop">Магазин</button>
     <button class="tab-btn" data-tab="prayer">Молитва Хабиби</button>
     <button class="tab-btn" data-tab="profile">Профиль</button>
+    <button class="tab-btn summer-tab" data-tab="summer">🍉 Летняя витрина</button>
   </div>
 
   <!-- ===== UPGRADE TAB ===== -->
@@ -590,8 +609,8 @@
         <svg viewBox="0 0 120 120" width="110" height="110">
           <defs>
             <radialGradient id="prayerGlow" cx="50%" cy="45%" r="60%">
-              <stop offset="0%" stop-color="#5eead4"/>
-              <stop offset="100%" stop-color="#0d3b34"/>
+              <stop offset="0%" stop-color="#ffb020"/>
+              <stop offset="100%" stop-color="#3d2410"/>
             </radialGradient>
           </defs>
           <circle cx="60" cy="60" r="52" fill="url(#prayerGlow)" opacity="0.25"/>
@@ -622,6 +641,13 @@
       <button class="profile-logout-btn" id="logoutBtn" type="button">Выйти из аккаунта</button>
       <p class="profile-note">Прогресс сохраняется автоматически в общей базе данных — доступен с любого устройства под этим логином.</p>
     </div>
+  </div>
+
+  <!-- ===== SUMMER SHOWCASE TAB ===== -->
+  <div class="tab-panel" id="panel-summer">
+    <div class="step-label summer-label"><span class="n">🍉</span> Летняя витрина — предметы сезона</div>
+    <p class="summer-intro">Ограниченные летние отделки — арбуз, пальмы, закатный неон. Покупаются за кредиты и сразу попадают в инвентарь, как обычный товар.</p>
+    <div class="item-grid" id="summerGrid"></div>
   </div>
 
   <footer>
@@ -728,11 +754,11 @@
   }
 
   const RARITIES = [
-    {key:'common', color:'#8a93a3', label:'Ширпотреб', base:60},
-    {key:'uncommon', color:'#4b9fd6', label:'Промышленное', base:180},
-    {key:'rare', color:'#7c6bf0', label:'Запрещённое', base:520},
-    {key:'mythic', color:'#c14be0', label:'Тайное', base:1400},
-    {key:'legendary', color:'#ff9f43', label:'Крайне редкое', base:3800},
+    {key:'common', color:'#a89178', label:'Ширпотреб', base:60},
+    {key:'uncommon', color:'#2dd4bf', label:'Промышленное', base:180},
+    {key:'rare', color:'#ff8c3a', label:'Запрещённое', base:520},
+    {key:'mythic', color:'#ff5c8a', label:'Тайное', base:1400},
+    {key:'legendary', color:'#ffd23f', label:'Крайне редкое', base:3800},
   ];
 
   const NAME_PARTS = {
@@ -774,11 +800,11 @@
   // so common items look like scuffed base metal and legendary items look like
   // hand-finished showpieces, purely through gradients/patterns/filters (no photos).
   const FINISHES = {
-    common:    { base:['#6b7280','#9ca3af'], accent:'#4b5563', pattern:'brushed',  glow:0 },
-    uncommon:  { base:['#1f6fae','#5db3ea'], accent:'#0e4a78', pattern:'diagonal', glow:0 },
-    rare:      { base:['#5b3fc2','#a78bfa'], accent:'#3a2680', pattern:'hex',      glow:6 },
-    mythic:    { base:['#9c2fb0','#e879f9'], accent:'#5c1a6b', pattern:'crackle',  glow:10 },
-    legendary: { base:['#e0791f','#ffcf6b'], accent:'#8a3d0a', pattern:'prism',    glow:16 },
+    common:    { base:['#8a7358','#c2a892'], accent:'#4a3a28', pattern:'brushed',  glow:0 },
+    uncommon:  { base:['#0f9488','#5eead4'], accent:'#0a4c46', pattern:'diagonal', glow:0 },
+    rare:      { base:['#d9541a','#ffb066'], accent:'#7a2e0a', pattern:'hex',      glow:6 },
+    mythic:    { base:['#d43f75','#ff9ec4'], accent:'#7a1f42', pattern:'crackle',  glow:10 },
+    legendary: { base:['#e0a80f','#fff08a'], accent:'#8a5e05', pattern:'prism',    glow:16 },
   };
 
   function weaponSVG(shape, rarityKey){
@@ -907,6 +933,72 @@
     </svg>`;
   }
 
+  // ===== Summer showcase icons — bright standalone tropical motifs, each with
+  // its own gradient treatment rather than the weapon rarity/finish system.
+  const SUMMER_ITEMS = [
+    {
+      name: 'Арбузный клинок', shape: 'watermelonKnife', price: 640,
+      grad: ['#ff5c8a', '#7fd858'], accent: '#2f6b1f',
+      body: `<path d="M6 26 h30 l3 -3 l18 -14 l3 3 l-15 13 l-3 3 h4 v4 h-40 z"/><rect x="4" y="26" width="8" height="4"/>`,
+      dots: `<circle cx="14" cy="28" r="1.1"/><circle cx="20" cy="27" r="1.1"/><circle cx="26" cy="29" r="1.1"/>`,
+    },
+    {
+      name: 'Пальмовый АК', shape: 'palmRifle', price: 980,
+      grad: ['#0f9488', '#ffd23f'], accent: '#0a4c46',
+      body: `<path d="M2 26 h4 v-2 h44 v-3 h6 v3 h5 v3 h4 l7 -6 h5 v6 h3 v5 h-15 l-3 7 h-9 v5 h-9 v-5 h-4 l-2 -4 h-32 v-3 h-4 z"/><rect x="44" y="10" width="5" height="11"/>`,
+      dots: '',
+    },
+    {
+      name: 'Закатный неон USP', shape: 'sunsetPistol', price: 420,
+      grad: ['#ff8c3a', '#ff5c8a'], accent: '#7a1f42',
+      body: `<path d="M8 18 h26 v3 h6 v3 h6 v10 h-6 v3 h-9 v-3 h-4 v-16 h-11 l-2 3 l-8 13 h-5 l7 -12 z"/><rect x="34" y="24" width="6" height="6"/>`,
+      dots: '',
+    },
+    {
+      name: 'Тропический нож', shape: 'tropicalKnife', price: 310,
+      grad: ['#2dd4bf', '#ffd23f'], accent: '#0a4c46',
+      body: `<path d="M6 26 h34 l18 -14 l3 3 l-15 13 h6 v4 h-46 z"/>`,
+      dots: '',
+    },
+    {
+      name: 'Ананасовый обрез', shape: 'pineappleShotgun', price: 730,
+      grad: ['#ffd23f', '#0f9488'], accent: '#8a5e05',
+      body: `<path d="M2 28 h60 v-6 h6 v6 h4 v6 h-10 l-4 6 h-8 v-6 h-48 z"/><rect x="14" y="22" width="4" height="6"/>`,
+      dots: `<path d="M8 24 l4 -3 M16 24 l4 -3 M24 24 l4 -3" stroke-width="1.1"/>`,
+    },
+    {
+      name: 'Флип-флоп перчатки', shape: 'flipflopGloves', price: 560,
+      grad: ['#ff5c8a', '#ffd23f'], accent: '#7a1f42',
+      body: `<path d="M10 30 c0 -10 4 -18 12 -18 c2 0 3 2 3 4 v6 c2 -2 3 -8 3 -10 c0 -2 1 -4 3 -4 c2 0 3 2 3 4 v9 c2 -3 3 -9 3 -11 c0 -2 1 -3 3 -3 c2 0 3 1 3 3 v14 c0 6 -4 10 -10 10 h-8 c-8 0 -12 -4 -12 -4 z"/>`,
+      dots: '',
+    },
+  ];
+
+  function summerIconSVG(item){
+    const uidTag = 'sg' + (__patternSeq++);
+    const gradId = 'sgrad-' + uidTag;
+    const glowId = 'sglow-' + uidTag;
+    const [c1, c2] = item.grad;
+    return `<svg viewBox="0 0 76 44" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="${c1}"/>
+          <stop offset="100%" stop-color="${c2}"/>
+        </linearGradient>
+        <filter id="${glowId}" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="2.2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <g filter="url(#${glowId})">
+        <g fill="${item.accent}" opacity="0.85" transform="translate(0.8,0.8)">${item.body}</g>
+        <g fill="url(#${gradId})">${item.body}</g>
+        <g fill="none" stroke="#ffffff" stroke-width="0.6" opacity="0.5">${item.body}</g>
+        <g fill="#ffffff" opacity="0.6">${item.dots || ''}</g>
+      </g>
+    </svg>`;
+  }
+
   function makeItem(rarityKey){
     const r = RARITIES.find(x=>x.key===rarityKey);
     const kind = rand(WEAPON_KINDS);
@@ -923,7 +1015,10 @@
   }
 
   function fmtPrice(p){ return p.toLocaleString('ru-RU') + ' кр.'; }
-  function iconHTML(item){ return weaponSVG(item.shape, item.rarity); }
+  function iconHTML(item){
+    if(item.isSummer) return summerIconSVG(item);
+    return weaponSVG(item.shape, item.rarity);
+  }
 
   // ===== STATE =====
   const inventoryData = [];
@@ -1236,6 +1331,46 @@
     });
   }
 
+  // Summer showcase: a small fixed catalog of limited-edition tropical items.
+  // Unlike the regular shop, this catalog never depletes — each purchase just
+  // creates a fresh instance of the same summer item, since these are meant
+  // to be a repeatable seasonal cosmetic line rather than a random roll.
+  const summerGrid = document.getElementById('summerGrid');
+  function renderSummerTab(){
+    if(!summerGrid) return;
+    summerGrid.innerHTML = '';
+    SUMMER_ITEMS.forEach(def => {
+      const div = document.createElement('div');
+      div.className = 'item-card summer-card';
+      const affordable = credits >= def.price;
+      div.innerHTML = `
+        <div class="icon-box">${summerIconSVG(def)}</div>
+        <div class="name">${def.name}</div>
+        <div class="tier" style="color:${def.grad[0]}">Летнее</div>
+        <div class="price">${fmtPrice(def.price)}</div>
+        <button class="buy-btn" type="button" ${affordable ? '' : 'disabled'}>Купить</button>
+      `;
+      div.querySelector('.buy-btn').addEventListener('click', (e)=>{
+        e.stopPropagation();
+        if(credits < def.price) return;
+        credits -= def.price;
+        inventoryData.push({
+          id: uid(),
+          isSummer: true,
+          shape: def.shape,
+          name: def.name,
+          price: def.price,
+          color: def.grad[0],
+          label: 'Летнее',
+          rarity: 'summer',
+        });
+        if(selectedStakeIndex === -1) selectedStakeIndex = inventoryData.length - 1;
+        renderAll();
+      });
+      summerGrid.appendChild(div);
+    });
+  }
+
   // ===== Trade boxes + wheel state =====
   function renderTradeBoxes(){
     const stake = currentStake();
@@ -1311,6 +1446,7 @@
     renderStakeGrid();
     renderInventoryTab();
     renderShopTab();
+    renderSummerTab();
     renderTradeBoxes();
     renderChancePresets();
     paintWheel(effectiveChance());
