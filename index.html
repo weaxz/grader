@@ -65,6 +65,7 @@
   }
   .stat-chip b{ color:var(--cyan); font-size:14.5px; }
   .stat-chip.credits b{ color:var(--orange); }
+  .stat-chip.shells-chip b{ color:var(--blue); }
 
   .hero{ padding: 30px 0 6px; }
   .eyebrow{
@@ -450,7 +451,60 @@
     pointer-events:none;
   }
   .summer-card .icon-box{ position:relative; z-index:1; }
-  .summer-card .name, .summer-card .tier, .summer-card .price{ position:relative; z-index:1; }
+  .summer-card .name, .summer-card .tier, .summer-card .price, .summer-card .buy-btn{ position:relative; z-index:1; }
+
+  /* ===== SHELL CURRENCY EXCHANGE ===== */
+  .shell-exchange{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:18px 20px; margin-bottom:22px; display:flex; flex-direction:column; gap:12px;
+  }
+  .shell-balance{
+    font-family:'Chakra Petch', sans-serif; font-size:15px; color:var(--muted);
+  }
+  .shell-balance b{ color:var(--blue); font-size:17px; }
+  .shell-exchange-form{ display:flex; gap:10px; flex-wrap:wrap; }
+  .shell-input{
+    flex:1; min-width:140px; font-family:'Inter', sans-serif; background:var(--panel-2);
+    border:1px solid var(--line); color:var(--text); border-radius:9px; padding:11px 13px;
+    font-size:14px; outline:none; transition:border-color .15s;
+  }
+  .shell-input:focus{ border-color:var(--blue); }
+  .shell-exchange-btn{
+    font-family:'Chakra Petch', sans-serif; font-size:12.5px; font-weight:700;
+    background:var(--grad-blue); color:#1a0f05; border:none; border-radius:9px;
+    padding:11px 16px; cursor:pointer; white-space:nowrap; transition:filter .15s, transform .15s;
+  }
+  .shell-exchange-btn:hover{ filter:brightness(1.08); transform:translateY(-1px); }
+  .shell-exchange-btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
+  .shell-exchange-note{ font-size:12px; color:var(--muted); min-height:16px; }
+  .shell-exchange-note.error{ color:var(--red); }
+  .shell-exchange-note.success{ color:var(--cyan); }
+
+  /* ===== CLICKER ===== */
+  .clicker-box{
+    max-width:380px; margin:0 auto; text-align:center;
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    padding:36px 28px; display:flex; flex-direction:column; align-items:center; gap:16px;
+  }
+  .clicker-btn{
+    width:100%; display:flex; flex-direction:column; align-items:center; gap:6px;
+    font-family:'Chakra Petch', sans-serif; background:var(--grad-blue); color:#1a0f05;
+    border:none; border-radius:16px; padding:26px 20px; cursor:pointer;
+    transition:transform .1s ease, filter .15s ease;
+  }
+  .clicker-btn:active{ transform:scale(0.96); }
+  .clicker-btn:disabled{ opacity:.45; cursor:not-allowed; filter:grayscale(0.4); }
+  .clicker-btn-icon{ font-size:34px; line-height:1; }
+  .clicker-btn-label{ font-size:16px; font-weight:700; letter-spacing:.02em; }
+  .clicker-btn-reward{ font-size:12.5px; opacity:.85; }
+  .clicker-cooldown-bar{
+    width:100%; height:6px; border-radius:4px; background:var(--panel-2); overflow:hidden;
+  }
+  .clicker-cooldown-fill{
+    height:100%; width:100%; background:var(--grad-blue); transform-origin:left center;
+    transition:transform linear;
+  }
+  .clicker-note{ font-size:12.5px; color:var(--muted); line-height:1.5; margin:0; }
 
   footer{
     margin:70px 0 46px; padding-top:22px; border-top:1px solid var(--line);
@@ -499,6 +553,7 @@
     <div class="header-stats">
       <div class="stat-chip">Предметов: <b id="counterVal">0</b></div>
       <div class="stat-chip credits">Кредиты: <b id="creditsVal">1000</b></div>
+      <div class="stat-chip shells-chip">🐚 <b id="shellsHeaderVal">0</b></div>
       <button class="stat-chip profile-chip" id="profileChipBtn" type="button">👤 <b id="profileNameLabel">—</b></button>
     </div>
   </header>
@@ -516,6 +571,7 @@
     <button class="tab-btn" data-tab="prayer">Молитва Хабиби</button>
     <button class="tab-btn" data-tab="profile">Профиль</button>
     <button class="tab-btn summer-tab" data-tab="summer">🍉 Летняя витрина</button>
+    <button class="tab-btn" data-tab="clicker">🖱️ Кликер</button>
   </div>
 
   <!-- ===== UPGRADE TAB ===== -->
@@ -646,8 +702,32 @@
   <!-- ===== SUMMER SHOWCASE TAB ===== -->
   <div class="tab-panel" id="panel-summer">
     <div class="step-label summer-label"><span class="n">🍉</span> Летняя витрина — предметы сезона</div>
-    <p class="summer-intro">Ограниченные летние отделки — арбуз, пальмы, закатный неон. Покупаются за кредиты и сразу попадают в инвентарь, как обычный товар.</p>
+    <p class="summer-intro">Ограниченные летние отделки — арбуз, пальмы, закатный неон. Покупаются за <b>Ракушки</b> — отдельную летнюю валюту, которую можно выменять из кредитов ниже.</p>
+
+    <div class="shell-exchange">
+      <div class="shell-balance">🐚 Ракушек: <b id="shellBalance">0</b></div>
+      <div class="shell-exchange-form">
+        <input class="shell-input" id="shellExchangeAmount" type="number" min="100" step="100" placeholder="Кредитов на обмен">
+        <button class="shell-exchange-btn" id="shellExchangeBtn" type="button">Обменять (курс 5 кр. → 1 🐚)</button>
+      </div>
+      <div class="shell-exchange-note" id="shellExchangeNote"></div>
+    </div>
+
     <div class="item-grid" id="summerGrid"></div>
+  </div>
+
+  <!-- ===== CLICKER TAB ===== -->
+  <div class="tab-panel" id="panel-clicker">
+    <div class="step-label"><span class="n">🖱️</span> Кликер</div>
+    <div class="clicker-box">
+      <button class="clicker-btn" id="clickerBtn" type="button">
+        <span class="clicker-btn-icon">💰</span>
+        <span class="clicker-btn-label">Кликнуть</span>
+        <span class="clicker-btn-reward">+<span id="clickerRewardLabel">10–25</span> кредитов</span>
+      </button>
+      <div class="clicker-cooldown-bar"><div class="clicker-cooldown-fill" id="clickerCooldownFill"></div></div>
+      <p class="clicker-note" id="clickerNote">Кликай раз в несколько секунд, чтобы заработать кредиты без риска.</p>
+    </div>
   </div>
 
   <footer>
@@ -937,37 +1017,37 @@
   // its own gradient treatment rather than the weapon rarity/finish system.
   const SUMMER_ITEMS = [
     {
-      name: 'Арбузный клинок', shape: 'watermelonKnife', price: 640,
+      name: 'Арбузный клинок', shape: 'watermelonKnife', price: 130,
       grad: ['#ff5c8a', '#7fd858'], accent: '#2f6b1f',
       body: `<path d="M6 26 h30 l3 -3 l18 -14 l3 3 l-15 13 l-3 3 h4 v4 h-40 z"/><rect x="4" y="26" width="8" height="4"/>`,
       dots: `<circle cx="14" cy="28" r="1.1"/><circle cx="20" cy="27" r="1.1"/><circle cx="26" cy="29" r="1.1"/>`,
     },
     {
-      name: 'Пальмовый АК', shape: 'palmRifle', price: 980,
+      name: 'Пальмовый АК', shape: 'palmRifle', price: 195,
       grad: ['#0f9488', '#ffd23f'], accent: '#0a4c46',
       body: `<path d="M2 26 h4 v-2 h44 v-3 h6 v3 h5 v3 h4 l7 -6 h5 v6 h3 v5 h-15 l-3 7 h-9 v5 h-9 v-5 h-4 l-2 -4 h-32 v-3 h-4 z"/><rect x="44" y="10" width="5" height="11"/>`,
       dots: '',
     },
     {
-      name: 'Закатный неон USP', shape: 'sunsetPistol', price: 420,
+      name: 'Закатный неон USP', shape: 'sunsetPistol', price: 85,
       grad: ['#ff8c3a', '#ff5c8a'], accent: '#7a1f42',
       body: `<path d="M8 18 h26 v3 h6 v3 h6 v10 h-6 v3 h-9 v-3 h-4 v-16 h-11 l-2 3 l-8 13 h-5 l7 -12 z"/><rect x="34" y="24" width="6" height="6"/>`,
       dots: '',
     },
     {
-      name: 'Тропический нож', shape: 'tropicalKnife', price: 310,
+      name: 'Тропический нож', shape: 'tropicalKnife', price: 60,
       grad: ['#2dd4bf', '#ffd23f'], accent: '#0a4c46',
       body: `<path d="M6 26 h34 l18 -14 l3 3 l-15 13 h6 v4 h-46 z"/>`,
       dots: '',
     },
     {
-      name: 'Ананасовый обрез', shape: 'pineappleShotgun', price: 730,
+      name: 'Ананасовый обрез', shape: 'pineappleShotgun', price: 145,
       grad: ['#ffd23f', '#0f9488'], accent: '#8a5e05',
       body: `<path d="M2 28 h60 v-6 h6 v6 h4 v6 h-10 l-4 6 h-8 v-6 h-48 z"/><rect x="14" y="22" width="4" height="6"/>`,
       dots: `<path d="M8 24 l4 -3 M16 24 l4 -3 M24 24 l4 -3" stroke-width="1.1"/>`,
     },
     {
-      name: 'Флип-флоп перчатки', shape: 'flipflopGloves', price: 560,
+      name: 'Флип-флоп перчатки', shape: 'flipflopGloves', price: 110,
       grad: ['#ff5c8a', '#ffd23f'], accent: '#7a1f42',
       body: `<path d="M10 30 c0 -10 4 -18 12 -18 c2 0 3 2 3 4 v6 c2 -2 3 -8 3 -10 c0 -2 1 -4 3 -4 c2 0 3 2 3 4 v9 c2 -3 3 -9 3 -11 c0 -2 1 -3 3 -3 c2 0 3 1 3 3 v14 c0 6 -4 10 -10 10 h-8 c-8 0 -12 -4 -12 -4 z"/>`,
       dots: '',
@@ -1032,6 +1112,12 @@
   let fastMode = false;        // toggled by the speed button; shortens spin/case animation duration
   let currentUser = null;      // logged-in username, or null if not authenticated
   let totalSpins = 0;          // profile stat: how many times the wheel has been spun this account
+  let shells = 0;               // summer showcase currency, obtained only by exchanging credits
+  let clickerReadyAt = 0;       // timestamp (ms) when the clicker button becomes usable again
+  const CLICKER_COOLDOWN_MS = 4000;
+  const CLICKER_REWARD_MIN = 10;
+  const CLICKER_REWARD_MAX = 25;
+  const SHELL_EXCHANGE_RATE = 5; // credits per shell
 
   // ===== Account storage (Supabase — real shared database) =====
   // Accounts live in a Supabase Postgres table (grader_accounts), reachable
@@ -1071,6 +1157,7 @@
       credits: row.credits,
       inventory: row.inventory || [],
       totalSpins: row.total_spins || 0,
+      shells: row.shells || 0,
     };
   }
 
@@ -1095,6 +1182,7 @@
       credits: 1000,
       inventory: [],
       total_spins: 0,
+      shells: 0,
     };
     const res = await fetch(SUPABASE_TABLE, {
       method: 'POST',
@@ -1120,6 +1208,7 @@
           credits,
           inventory: inventoryData,
           total_spins: totalSpins,
+          shells,
         }),
       });
     } catch(e){ /* best-effort save; ignore transient network failures in this demo */ }
@@ -1130,6 +1219,7 @@
     inventoryData.length = 0;
     record.inventory.forEach(it => inventoryData.push(it));
     totalSpins = record.totalSpins || 0;
+    shells = record.shells || 0;
     selectedStakeIndex = inventoryData.length ? 0 : -1;
     selectedChance = null;
     currentTarget = null;
@@ -1243,6 +1333,8 @@
   function updateHeaderStats(){
     counterEl.textContent = inventoryData.length;
     creditsEl.textContent = credits.toLocaleString('ru-RU');
+    const shellsHeaderVal = document.getElementById('shellsHeaderVal');
+    if(shellsHeaderVal) shellsHeaderVal.textContent = shells;
   }
 
   // ===== Stake grid (upgrade tab) =====
@@ -1335,6 +1427,9 @@
   // Unlike the regular shop, this catalog never depletes — each purchase just
   // creates a fresh instance of the same summer item, since these are meant
   // to be a repeatable seasonal cosmetic line rather than a random roll.
+  // Prices in SUMMER_ITEMS are in shells; once an item is bought and sits in
+  // inventory, its stored `price` is converted to the credit-equivalent (at
+  // SHELL_EXCHANGE_RATE) so selling/staking it behaves like any other item.
   const summerGrid = document.getElementById('summerGrid');
   function renderSummerTab(){
     if(!summerGrid) return;
@@ -1342,24 +1437,24 @@
     SUMMER_ITEMS.forEach(def => {
       const div = document.createElement('div');
       div.className = 'item-card summer-card';
-      const affordable = credits >= def.price;
+      const affordable = shells >= def.price;
       div.innerHTML = `
         <div class="icon-box">${summerIconSVG(def)}</div>
         <div class="name">${def.name}</div>
         <div class="tier" style="color:${def.grad[0]}">Летнее</div>
-        <div class="price">${fmtPrice(def.price)}</div>
+        <div class="price">🐚 ${def.price}</div>
         <button class="buy-btn" type="button" ${affordable ? '' : 'disabled'}>Купить</button>
       `;
       div.querySelector('.buy-btn').addEventListener('click', (e)=>{
         e.stopPropagation();
-        if(credits < def.price) return;
-        credits -= def.price;
+        if(shells < def.price) return;
+        shells -= def.price;
         inventoryData.push({
           id: uid(),
           isSummer: true,
           shape: def.shape,
           name: def.name,
-          price: def.price,
+          price: def.price * SHELL_EXCHANGE_RATE,
           color: def.grad[0],
           label: 'Летнее',
           rarity: 'summer',
@@ -1369,6 +1464,102 @@
       });
       summerGrid.appendChild(div);
     });
+    renderShellBalance();
+  }
+
+  // ===== Shell currency exchange =====
+  const shellBalanceEl = document.getElementById('shellBalance');
+  const shellExchangeAmount = document.getElementById('shellExchangeAmount');
+  const shellExchangeBtn = document.getElementById('shellExchangeBtn');
+  const shellExchangeNote = document.getElementById('shellExchangeNote');
+
+  function renderShellBalance(){
+    if(shellBalanceEl) shellBalanceEl.textContent = shells;
+  }
+
+  function exchangeCreditsForShells(){
+    const raw = parseInt(shellExchangeAmount.value, 10);
+    shellExchangeNote.className = 'shell-exchange-note';
+    if(!raw || raw <= 0){
+      shellExchangeNote.textContent = 'Введи сумму кредитов на обмен.';
+      shellExchangeNote.classList.add('error');
+      return;
+    }
+    if(raw > credits){
+      shellExchangeNote.textContent = 'Недостаточно кредитов.';
+      shellExchangeNote.classList.add('error');
+      return;
+    }
+    const gained = Math.floor(raw / SHELL_EXCHANGE_RATE);
+    if(gained <= 0){
+      shellExchangeNote.textContent = `Нужно минимум ${SHELL_EXCHANGE_RATE} кредитов на одну ракушку.`;
+      shellExchangeNote.classList.add('error');
+      return;
+    }
+    const spent = gained * SHELL_EXCHANGE_RATE;
+    credits -= spent;
+    shells += gained;
+    shellExchangeAmount.value = '';
+    shellExchangeNote.textContent = `Обменяно ${spent} кредитов на ${gained} 🐚.`;
+    shellExchangeNote.classList.add('success');
+    renderAll();
+  }
+
+  if(shellExchangeBtn){
+    shellExchangeBtn.addEventListener('click', exchangeCreditsForShells);
+  }
+
+  // ===== Clicker =====
+  const clickerBtn = document.getElementById('clickerBtn');
+  const clickerCooldownFill = document.getElementById('clickerCooldownFill');
+  const clickerRewardLabel = document.getElementById('clickerRewardLabel');
+  const clickerNote = document.getElementById('clickerNote');
+  let clickerTickHandle = null;
+
+  function renderClickerTab(){
+    if(!clickerBtn) return;
+    const now = Date.now();
+    const remaining = clickerReadyAt - now;
+    if(remaining <= 0){
+      clickerBtn.disabled = false;
+      clickerCooldownFill.style.transition = 'none';
+      clickerCooldownFill.style.transform = 'scaleX(1)';
+      clickerNote.textContent = 'Готово к клику — жми и получай кредиты.';
+      if(clickerTickHandle){ clearInterval(clickerTickHandle); clickerTickHandle = null; }
+    } else {
+      clickerBtn.disabled = true;
+      const secondsLeft = Math.ceil(remaining / 1000);
+      clickerNote.textContent = `Следующий клик можно будет через ${secondsLeft} сек.`;
+      if(!clickerTickHandle){
+        clickerCooldownFill.style.transition = 'none';
+        clickerCooldownFill.style.transform = 'scaleX(0)';
+        void clickerCooldownFill.offsetWidth;
+        clickerCooldownFill.style.transition = `transform ${remaining}ms linear`;
+        clickerCooldownFill.style.transform = 'scaleX(1)';
+        clickerTickHandle = setInterval(()=>{
+          const stillLeft = clickerReadyAt - Date.now();
+          if(stillLeft <= 0){
+            renderClickerTab();
+          } else {
+            clickerNote.textContent = `Следующий клик можно будет через ${Math.ceil(stillLeft/1000)} сек.`;
+          }
+        }, 250);
+      }
+    }
+  }
+
+  function doClickerClick(){
+    if(Date.now() < clickerReadyAt) return;
+    const reward = Math.round(CLICKER_REWARD_MIN + Math.random() * (CLICKER_REWARD_MAX - CLICKER_REWARD_MIN));
+    credits += reward;
+    clickerReadyAt = Date.now() + CLICKER_COOLDOWN_MS;
+    clickerNote.textContent = `+${reward} кредитов!`;
+    playChime(true);
+    renderAll();
+  }
+
+  if(clickerBtn){
+    clickerBtn.addEventListener('click', doClickerClick);
   }
 
   // ===== Trade boxes + wheel state =====
@@ -1453,6 +1644,7 @@
     renderButtonAndNote();
     renderPrayerTab();
     renderProfileTab();
+    renderClickerTab();
     updateHeaderStats();
     saveAccountProgress();
   }
