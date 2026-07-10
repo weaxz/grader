@@ -423,7 +423,11 @@
       var(--bg);
     display:flex; align-items:center; justify-content:center; padding:24px;
     overflow-y:auto;
+    opacity:1; transition:opacity .35s ease;
   }
+  .auth-overlay.fading-out{ opacity:0; pointer-events:none; }
+  #gameWrap{ opacity:0; transition:opacity .35s ease; }
+  #gameWrap.visible{ opacity:1; }
   .auth-box{
     width:100%; max-width:380px; background:var(--panel); border:1px solid var(--line);
     border-radius:18px; padding:32px 28px; display:flex; flex-direction:column; gap:16px;
@@ -1373,6 +1377,16 @@
     return offers;
   }
 
+  // ===== Battlepass constants (must be declared before getBattlepassRewards()
+  // runs below, since it calls BP_MAX_LEVEL immediately at script load time) =====
+  const CLICKER_COOLDOWN_MS = 4000;
+  const CLICKER_REWARD_MIN = 10;
+  const CLICKER_REWARD_MAX = 25;
+  const SHELL_EXCHANGE_RATE = 5; // credits per shell
+  const BP_XP_PER_SPIN = 10;
+  const BP_XP_PER_LEVEL = 10;    // each spin grants exactly one level's worth of progress
+  const BP_MAX_LEVEL = 20;
+
   // ===== Battlepass reward track =====
   // 20 levels: mostly credits (scaling up), every 3rd level also throws in
   // shells, every 5th level gives a guaranteed summer cosmetic (cycling
@@ -1444,14 +1458,7 @@
   let totalSpins = 0;          // profile stat: how many times the wheel has been spun this account
   let shells = 0;               // summer showcase currency, obtained only by exchanging credits
   let clickerReadyAt = 0;       // timestamp (ms) when the clicker button becomes usable again
-  const CLICKER_COOLDOWN_MS = 4000;
-  const CLICKER_REWARD_MIN = 10;
-  const CLICKER_REWARD_MAX = 25;
-  const SHELL_EXCHANGE_RATE = 5; // credits per shell
   let bpXp = 0;                  // battlepass progress points, earned only from wheel spins
-  const BP_XP_PER_SPIN = 10;
-  const BP_XP_PER_LEVEL = 10;    // each spin grants exactly one level's worth of progress
-  const BP_MAX_LEVEL = 20;
   let bpClaimedLevels = [];      // levels whose reward has already been collected
   let pirateOffersCache = null;  // today's deterministic pirate offers, generated once per day
   let pirateBoughtToday = [];    // indices of pirate offers already purchased today
@@ -2685,10 +2692,16 @@
   function startGameForUser(username, record){
     currentUser = username;
     loadIntoState(record);
-    authOverlay.style.display = 'none';
+    authOverlay.classList.add('fading-out');
     gameWrap.style.display = 'block';
     renderTicks();
     renderAll();
+    // Let the game content paint at opacity:0 first, then fade both at once
+    // so the swap reads as a smooth handoff instead of an abrupt flash.
+    requestAnimationFrame(()=>{
+      gameWrap.classList.add('visible');
+    });
+    setTimeout(()=>{ authOverlay.style.display = 'none'; }, 350);
   }
 
   async function handleLogin(e){
@@ -2748,12 +2761,6 @@
 
   loginForm.addEventListener('submit', handleLogin);
   registerForm.addEventListener('submit', handleRegister);
-  // Fallback bindings directly on the buttons, in case the form's submit
-  // event doesn't fire in some mobile browser/webview (autofill quirks, etc).
-  const loginSubmitBtn = loginForm.querySelector('.auth-submit');
-  const registerSubmitBtn = registerForm.querySelector('.auth-submit');
-  if(loginSubmitBtn) loginSubmitBtn.addEventListener('click', handleLogin);
-  if(registerSubmitBtn) registerSubmitBtn.addEventListener('click', handleRegister);
 
   if(profileChipBtn){
     profileChipBtn.addEventListener('click', ()=>{
@@ -2768,8 +2775,10 @@
     logoutBtn.addEventListener('click', async ()=>{
       await saveAccountProgress();
       currentUser = null;
+      gameWrap.classList.remove('visible');
       gameWrap.style.display = 'none';
       authOverlay.style.display = 'flex';
+      authOverlay.classList.remove('fading-out');
       loginForm.reset();
       registerForm.reset();
       loginError.textContent = '';
