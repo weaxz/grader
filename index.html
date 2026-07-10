@@ -79,21 +79,67 @@
   .hero p{ color:var(--muted); font-size:15px; line-height:1.6; max-width:60ch; margin:0; }
 
   /* ===== TABS ===== */
-  .tabs{
-    display:flex; gap:6px; margin-top:32px; border-bottom:1px solid var(--line);
-    overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  .nav-bar{
+    display:flex; align-items:center; gap:14px; margin-top:32px; padding-bottom:14px;
+    border-bottom:1px solid var(--line);
   }
-  .tabs::-webkit-scrollbar{ display:none; }
+  .hamburger-wrap{ position:relative; }
+  .hamburger-btn{
+    display:flex; flex-direction:column; justify-content:center; gap:5px;
+    width:42px; height:42px; background:var(--panel); border:1px solid var(--line);
+    border-radius:10px; cursor:pointer; padding:0 10px;
+  }
+  .hamburger-btn span{ display:block; width:100%; height:2px; background:var(--text); border-radius:2px; }
+  .hamburger-btn:hover{ border-color:var(--cyan); }
+  .hamburger-dropdown{
+    display:none; position:absolute; top:calc(100% + 8px); left:0; z-index:150;
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:8px; min-width:220px; flex-direction:column; gap:2px;
+    box-shadow:0 12px 32px rgba(0,0,0,.45);
+  }
+  .hamburger-dropdown.open{ display:flex; }
+  .dd-tab-btn{
+    font-family:'Chakra Petch', sans-serif; font-size:13.5px; font-weight:600;
+    background:none; border:none; color:var(--muted); padding:11px 12px; cursor:pointer;
+    border-radius:8px; text-align:left; letter-spacing:.02em; transition:background .15s, color .15s;
+    width:100%;
+  }
+  .dd-tab-btn:hover{ background:var(--panel-2); color:var(--text); }
+  .dd-tab-btn.active{ background:rgba(45,212,191,.12); color:var(--cyan); }
+  .dd-summer.active{ background:linear-gradient(90deg, rgba(255,176,32,.16), rgba(45,212,191,.16)); }
+
+  .current-tab-label{
+    font-family:'Chakra Petch', sans-serif; font-size:14.5px; font-weight:700; color:var(--text);
+    flex:1;
+  }
+  .whats-new-btn{
+    font-family:'Chakra Petch', sans-serif; font-size:12.5px; font-weight:600;
+    background:var(--panel); border:1px solid var(--line); color:var(--muted);
+    border-radius:10px; padding:9px 14px; cursor:pointer; white-space:nowrap;
+    transition:border-color .15s, color .15s;
+  }
+  .whats-new-btn:hover{ border-color:var(--cyan); color:var(--text); }
+
+  /* tab-btn styling is now used inside the dropdown only */
   .tab-btn{
     font-family:'Chakra Petch', sans-serif; font-size:13.5px; font-weight:600;
-    background:none; border:none; color:var(--muted); padding:12px 18px; cursor:pointer;
-    border-bottom:2px solid transparent; letter-spacing:.02em; transition:color .15s;
-    white-space:nowrap; flex:0 0 auto;
+    background:none; border:none; color:var(--muted); cursor:pointer;
+    letter-spacing:.02em; transition:color .15s;
   }
-  .tab-btn:hover{ color:var(--text); }
-  .tab-btn.active{ color:var(--cyan); border-bottom-color:var(--cyan); }
   .tab-panel{ display:none; padding-top:28px; }
   .tab-panel.active{ display:block; }
+
+  /* ===== WHAT'S NEW MODAL ===== */
+  .whats-new-box{ max-width:560px; }
+  .whats-new-list{ display:flex; flex-direction:column; gap:22px; max-height:60vh; overflow-y:auto; }
+  .wn-entry{ border-left:2px solid var(--line); padding-left:16px; }
+  .wn-date{
+    font-family:'Chakra Petch', sans-serif; font-size:11px; color:var(--blue);
+    text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px;
+  }
+  .wn-title{ font-family:'Chakra Petch', sans-serif; font-size:15px; font-weight:700; margin-bottom:8px; }
+  .wn-points{ margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px; }
+  .wn-points li{ font-size:13px; color:var(--muted); line-height:1.5; }
 
   .step-label{
     font-family:'Chakra Petch', sans-serif; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
@@ -506,6 +552,106 @@
   }
   .clicker-note{ font-size:12.5px; color:var(--muted); line-height:1.5; margin:0; }
 
+  /* ===== BATTLEPASS ===== */
+  .bp-intro{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:0 0 20px; max-width:64ch; }
+  .bp-header{
+    display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; flex-wrap:wrap; gap:8px;
+  }
+  .bp-level-badge{
+    font-family:'Chakra Petch', sans-serif; font-size:16px; font-weight:700; color:var(--text);
+  }
+  .bp-level-badge b{ color:var(--blue); font-size:19px; }
+  .bp-xp-label{ font-family:'Chakra Petch', sans-serif; font-size:13px; color:var(--muted); }
+  .bp-progress-bar{
+    width:100%; height:14px; border-radius:8px; background:var(--panel-2); overflow:hidden;
+    border:1px solid var(--line); margin-bottom:26px;
+  }
+  .bp-progress-fill{
+    height:100%; width:0%; background:var(--grad-blue); transition:width .4s ease;
+  }
+  .bp-track{
+    display:flex; gap:14px; overflow-x:auto; padding-bottom:10px; -webkit-overflow-scrolling:touch; scrollbar-width:none;
+  }
+  .bp-track::-webkit-scrollbar{ display:none; }
+  .bp-reward{
+    flex:0 0 auto; width:112px; background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:12px 8px 10px; display:flex; flex-direction:column; align-items:center; gap:8px; text-align:center;
+    position:relative;
+  }
+  .bp-reward.claimed{ border-color:var(--cyan); }
+  .bp-reward.locked{ opacity:.55; }
+  .bp-reward .bp-level-num{
+    font-family:'Chakra Petch', sans-serif; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em;
+  }
+  .bp-reward .icon-box{ width:48px; height:48px; border-radius:8px; background:var(--bg-2); display:flex; align-items:center; justify-content:center; }
+  .bp-reward .icon-box svg{ width:32px; height:32px; }
+  .bp-reward .bp-reward-label{ font-family:'Chakra Petch', sans-serif; font-size:10.5px; line-height:1.25; }
+  .bp-reward .bp-claim-btn{
+    font-family:'Chakra Petch', sans-serif; font-size:10px; font-weight:700;
+    background:var(--grad-blue); color:#1a0f05; border:none; border-radius:6px;
+    padding:6px 8px; cursor:pointer; width:100%;
+  }
+  .bp-reward .bp-claimed-tag{ font-size:10px; color:var(--cyan); font-family:'Chakra Petch', sans-serif; }
+  .bp-reward .bp-locked-tag{ font-size:10px; color:var(--muted); font-family:'Chakra Petch', sans-serif; }
+
+  /* ===== TRADE ===== */
+  .trade-intro{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:0 0 20px; max-width:64ch; }
+  .trade-send-box{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; display:flex; flex-direction:column; gap:14px; max-width:480px;
+  }
+  .trade-field{ display:flex; flex-direction:column; gap:6px; }
+  .trade-label{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+  .trade-select, .trade-input{
+    font-family:'Inter', sans-serif; background:var(--panel-2); border:1px solid var(--line); color:var(--text);
+    border-radius:9px; padding:11px 13px; font-size:14px; outline:none; transition:border-color .15s;
+  }
+  .trade-select:focus, .trade-input:focus{ border-color:var(--blue); }
+  .trade-send-btn{
+    font-family:'Chakra Petch', sans-serif; font-size:13.5px; font-weight:700;
+    background:var(--grad-blue); color:#1a0f05; border:none; border-radius:10px;
+    padding:13px 18px; cursor:pointer; transition:filter .15s, transform .15s;
+  }
+  .trade-send-btn:hover{ filter:brightness(1.08); transform:translateY(-1px); }
+  .trade-send-btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
+  .trade-send-note{ font-size:12px; color:var(--muted); min-height:16px; }
+  .trade-send-note.error{ color:var(--red); }
+  .trade-send-note.success{ color:var(--cyan); }
+
+  .trade-offer-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; display:flex; align-items:center; gap:14px; margin-bottom:10px; flex-wrap:wrap;
+  }
+  .trade-offer-card .icon-box{
+    width:48px; height:48px; border-radius:8px; background:var(--bg-2); flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .trade-offer-card .icon-box svg{ width:32px; height:32px; }
+  .trade-offer-meta{ flex:1; min-width:160px; }
+  .trade-offer-from{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px; }
+  .trade-offer-name{ font-family:'Chakra Petch', sans-serif; font-size:14px; font-weight:600; }
+  .trade-offer-actions{ display:flex; gap:8px; }
+  .trade-accept-btn, .trade-decline-btn{
+    font-family:'Chakra Petch', sans-serif; font-size:12px; font-weight:700; border:none; border-radius:8px;
+    padding:9px 14px; cursor:pointer; transition:filter .15s;
+  }
+  .trade-accept-btn{ background:var(--grad-blue); color:#1a0f05; }
+  .trade-decline-btn{ background:var(--panel-2); border:1px solid var(--line); color:var(--red); }
+  .trade-accept-btn:hover, .trade-decline-btn:hover{ filter:brightness(1.1); }
+
+  /* ===== PIRATE ===== */
+  .pirate-intro{ font-size:13.5px; color:var(--muted); line-height:1.6; margin:0 0 14px; max-width:66ch; }
+  .pirate-timer{
+    font-family:'Chakra Petch', sans-serif; font-size:12.5px; color:var(--orange);
+    margin-bottom:18px; letter-spacing:.02em;
+  }
+  .pirate-card{ position:relative; }
+  .pirate-card .price{ display:flex; align-items:center; gap:6px; }
+  .pirate-card .price .old-price{ text-decoration:line-through; color:var(--muted); font-size:9.5px; font-weight:400; }
+  .pirate-card .pirate-warn{
+    font-size:9px; color:var(--red); text-transform:uppercase; letter-spacing:.04em; margin-top:-2px;
+  }
+
   footer{
     margin:70px 0 46px; padding-top:22px; border-top:1px solid var(--line);
     color:var(--muted); font-size:12.5px; line-height:1.7;
@@ -564,15 +710,31 @@
     <p>Три раздела: апгрейд предметов на колесе, инвентарь с продажей за кредиты и магазин, где на эти кредиты можно купить новые предметы для следующего апгрейда.</p>
   </section>
 
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="upgrade">Апгрейд</button>
-    <button class="tab-btn" data-tab="inventory">Инвентарь</button>
-    <button class="tab-btn" data-tab="shop">Магазин</button>
-    <button class="tab-btn" data-tab="prayer">Молитва Хабиби</button>
-    <button class="tab-btn" data-tab="profile">Профиль</button>
-    <button class="tab-btn summer-tab" data-tab="summer">🍉 Летняя витрина</button>
-    <button class="tab-btn" data-tab="clicker">🖱️ Кликер</button>
+  <div class="nav-bar">
+    <div class="hamburger-wrap">
+      <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="hamburger-dropdown" id="hamburgerDropdown">
+        <button class="tab-btn dd-tab-btn active" data-tab="upgrade">Апгрейд</button>
+        <button class="tab-btn dd-tab-btn" data-tab="inventory">Инвентарь</button>
+        <button class="tab-btn dd-tab-btn" data-tab="shop">Магазин</button>
+        <button class="tab-btn dd-tab-btn" data-tab="prayer">Молитва Хабиби</button>
+        <button class="tab-btn dd-tab-btn" data-tab="profile">Профиль</button>
+        <button class="tab-btn dd-tab-btn dd-summer" data-tab="summer">🍉 Летняя витрина</button>
+        <button class="tab-btn dd-tab-btn" data-tab="clicker">🖱️ Кликер</button>
+        <button class="tab-btn dd-tab-btn" data-tab="battlepass">🎖️ Баттлпасс</button>
+        <button class="tab-btn dd-tab-btn" data-tab="trade">🤝 Трейд</button>
+        <button class="tab-btn dd-tab-btn" data-tab="pirate">⚓ Пират</button>
+      </div>
+    </div>
+    <div class="current-tab-label" id="currentTabLabel">Апгрейд</div>
+    <button class="whats-new-btn" id="whatsNewBtn" type="button">🆕 Что нового</button>
   </div>
+
+  <!-- Hidden tab-btn elements kept for JS compatibility (tab switching logic
+       targets .tab-btn[data-tab]); the dropdown buttons above trigger the
+       same switching function. -->
 
   <!-- ===== UPGRADE TAB ===== -->
   <div class="tab-panel active" id="panel-upgrade">
@@ -730,6 +892,50 @@
     </div>
   </div>
 
+  <!-- ===== BATTLEPASS TAB ===== -->
+  <div class="tab-panel" id="panel-battlepass">
+    <div class="step-label"><span class="n">🎖️</span> Летний баттлпасс</div>
+    <p class="bp-intro">Каждая прокрутка колеса даёт очки прогресса. Дошёл до следующего уровня — забери награду. Уровней 20, дальше награды становятся ценнее.</p>
+
+    <div class="bp-header">
+      <div class="bp-level-badge">Уровень <b id="bpLevelLabel">1</b></div>
+      <div class="bp-xp-label"><span id="bpXpCurrent">0</span> / <span id="bpXpNeeded">10</span> очков</div>
+    </div>
+    <div class="bp-progress-bar"><div class="bp-progress-fill" id="bpProgressFill"></div></div>
+
+    <div class="bp-track" id="bpTrack"></div>
+  </div>
+
+  <!-- ===== TRADE TAB ===== -->
+  <div class="tab-panel" id="panel-trade">
+    <div class="step-label"><span class="n">🤝</span> Трейд с друзьями</div>
+    <p class="trade-intro">Выбери свой предмет, укажи ник друга и отправь предложение. Оно появится у него во «Входящих», где он сможет принять или отклонить — без твоего участия предмет никуда не денется.</p>
+
+    <div class="trade-send-box">
+      <div class="trade-field">
+        <label class="trade-label">Твой предмет для отправки</label>
+        <select class="trade-select" id="tradeItemSelect"></select>
+      </div>
+      <div class="trade-field">
+        <label class="trade-label">Никнейм друга</label>
+        <input class="trade-input" id="tradeToUsername" type="text" placeholder="Ник получателя">
+      </div>
+      <button class="trade-send-btn" id="tradeSendBtn" type="button">Отправить предложение</button>
+      <div class="trade-send-note" id="tradeSendNote"></div>
+    </div>
+
+    <div class="step-label" style="margin-top:36px;"><span class="n">📥</span> Входящие предложения</div>
+    <div id="incomingTradesList"></div>
+  </div>
+
+  <!-- ===== PIRATE TAB ===== -->
+  <div class="tab-panel" id="panel-pirate">
+    <div class="step-label"><span class="n">⚓</span> Пиратская распродажа</div>
+    <p class="pirate-intro">Раз в реальный день к берегу причаливает пират с партией оружия дешевле обычного магазина. Он честный делец... по большей части. За вывеской неплохой пушки иногда прячется откровенный хлам — узнаешь только после покупки. Новый товар — завтра.</p>
+    <div class="pirate-timer" id="pirateTimer"></div>
+    <div class="item-grid" id="pirateGrid"></div>
+  </div>
+
   <footer>
     <b>Это учебный макет.</b> Все предметы, цены в кредитах и шансы — вымышленные и генерируются на клиенте. Иконки — обобщённые силуэты оружия в SVG, а не реальный арт Valve. Сайт не подключён к Steam, не принимает платежи и не выводит средства. Стрелка и цветные зоны нарисованы в одном SVG вокруг общего центра — сектор, куда указывает стрелка после остановки, и есть единственный источник результата.
   </footer>
@@ -762,6 +968,50 @@
     </div>
     <div class="case-result" id="caseResult"></div>
     <button class="case-continue-btn" id="caseContinueBtn" style="display:none;">Забрать и продолжить</button>
+  </div>
+</div>
+
+<!-- ===== WHAT'S NEW MODAL ===== -->
+<div class="modal-overlay" id="whatsNewModal">
+  <div class="modal-box whats-new-box">
+    <div class="modal-head">
+      <div class="modal-title">🆕 Что нового</div>
+      <button class="modal-close" id="whatsNewClose">✕</button>
+    </div>
+    <div class="whats-new-list">
+
+      <div class="wn-entry">
+        <div class="wn-date">Последнее обновление</div>
+        <div class="wn-title">Пират, трейд и баттлпасс</div>
+        <ul class="wn-points">
+          <li>⚓ Пират — ежедневная распродажа оружия дешевле обычного магазина. Некоторые предложения — обман: под видом хорошей пушки может скрываться дешёвка.</li>
+          <li>🤝 Трейд между игроками — отправляй предметы друзьям с подтверждением, они сами решают принять или отклонить.</li>
+          <li>🎖️ Баттлпасс — 20 уровней наград за прокрутки колеса: кредиты, ракушки и летние скины.</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Летнее обновление</div>
+        <div class="wn-title">Новая тема и летняя витрина</div>
+        <ul class="wn-points">
+          <li>🍉 Летняя витрина с уникальными скинами — арбуз, пальмы, закатный неон.</li>
+          <li>🐚 Ракушки — отдельная валюта для летних покупок, обменивается из кредитов.</li>
+          <li>Полная перекраска темы на летние тона.</li>
+          <li>🖱️ Кликер — простой способ заработать кредиты без риска.</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Раньше</div>
+        <div class="wn-title">Аккаунты и молитва Хабиби</div>
+        <ul class="wn-points">
+          <li>Вход и регистрация — прогресс сохраняется в общей базе данных.</li>
+          <li>☪ Молитва Хабиби — испытай удачу за кредиты, получи случайный бафф к шансу апгрейда.</li>
+          <li>Утешительный кейс — при проигрыше дорогого предмета есть шанс получить что-то взамен.</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -1079,6 +1329,86 @@
     </svg>`;
   }
 
+  // ===== Pirate's daily deals =====
+  // Deterministic per-player, per-day shop: seeded off (UTC date + username),
+  // so the same person sees the same 4 offers all day, but every player gets
+  // a different assortment, and it changes at UTC midnight. Some offers are
+  // "honest" (you get exactly the shown item), others are a bluff — the card
+  // displays a decent weapon, but purchasing it actually grants a cheap
+  // common-tier item instead. Which offers are honest vs a bluff is also
+  // decided by the seed, so it's consistent for that player that day, but the
+  // player can't tell which is which just by looking.
+  function mulberry32(seed){
+    return function(){
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function seedFromString(str){
+    let h = 0;
+    for(let i=0;i<str.length;i++){ h = (Math.imul(31, h) + str.charCodeAt(i)) | 0; }
+    return h;
+  }
+  function todayUTCString(){
+    const d = new Date();
+    return `${d.getUTCFullYear()}-${d.getUTCMonth()+1}-${d.getUTCDate()}`;
+  }
+
+  function getPirateOffers(){
+    if(!currentUser) return [];
+    const seedStr = todayUTCString() + ':' + currentUser.toLowerCase();
+    const rand = mulberry32(seedFromString(seedStr));
+    const offers = [];
+    const displayTiers = ['uncommon', 'rare', 'rare', 'mythic'];
+    for(let i=0;i<4;i++){
+      const tierKey = displayTiers[i];
+      const shownItem = makeItem(tierKey);
+      const discount = 0.45 + rand() * 0.15; // sold at 45-60% of normal price
+      shownItem.price = Math.round(shownItem.price * discount);
+      const isScam = rand() < 0.4; // 40% chance this particular offer is a bluff
+      offers.push({ shownItem, isScam, discount });
+    }
+    return offers;
+  }
+
+  // ===== Battlepass reward track =====
+  // 20 levels: mostly credits (scaling up), every 3rd level also throws in
+  // shells, every 5th level gives a guaranteed summer cosmetic (cycling
+  // through SUMMER_ITEMS), and level 20 is a big finale payout.
+  function getBattlepassRewards(){
+    const rewards = [];
+    for(let lvl = 1; lvl <= BP_MAX_LEVEL; lvl++){
+      if(lvl === BP_MAX_LEVEL){
+        rewards.push({ level: lvl, type: 'finale', credits: 2000, shells: 100 });
+      } else if(lvl % 5 === 0){
+        const skin = SUMMER_ITEMS[(lvl / 5 - 1) % SUMMER_ITEMS.length];
+        rewards.push({ level: lvl, type: 'summer', skin });
+      } else if(lvl % 3 === 0){
+        rewards.push({ level: lvl, type: 'shells', shells: 15 + lvl * 2 });
+      } else {
+        rewards.push({ level: lvl, type: 'credits', credits: 80 + lvl * 25 });
+      }
+    }
+    return rewards;
+  }
+  const BATTLEPASS_REWARDS = getBattlepassRewards();
+
+  function bpRewardIconHTML(reward){
+    if(reward.type === 'summer') return summerIconSVG(reward.skin);
+    if(reward.type === 'finale') return `<div style="font-size:28px;">🏆</div>`;
+    if(reward.type === 'shells') return `<div style="font-size:26px;">🐚</div>`;
+    return `<div style="font-size:26px;">💰</div>`;
+  }
+  function bpRewardLabel(reward){
+    if(reward.type === 'summer') return reward.skin.name;
+    if(reward.type === 'finale') return `${reward.credits} кр. + ${reward.shells} 🐚`;
+    if(reward.type === 'shells') return `${reward.shells} 🐚`;
+    return `${reward.credits} кр.`;
+  }
+
+
   function makeItem(rarityKey){
     const r = RARITIES.find(x=>x.key===rarityKey);
     const kind = rand(WEAPON_KINDS);
@@ -1118,6 +1448,13 @@
   const CLICKER_REWARD_MIN = 10;
   const CLICKER_REWARD_MAX = 25;
   const SHELL_EXCHANGE_RATE = 5; // credits per shell
+  let bpXp = 0;                  // battlepass progress points, earned only from wheel spins
+  const BP_XP_PER_SPIN = 10;
+  const BP_XP_PER_LEVEL = 10;    // each spin grants exactly one level's worth of progress
+  const BP_MAX_LEVEL = 20;
+  let bpClaimedLevels = [];      // levels whose reward has already been collected
+  let pirateOffersCache = null;  // today's deterministic pirate offers, generated once per day
+  let pirateBoughtToday = [];    // indices of pirate offers already purchased today
 
   // ===== Account storage (Supabase — real shared database) =====
   // Accounts live in a Supabase Postgres table (grader_accounts), reachable
@@ -1130,6 +1467,7 @@
   const SUPABASE_URL = 'https://vdpfpuacdqixkvxjvqfp.supabase.co';
   const SUPABASE_KEY = 'sb_publishable_77S5tSWAxNWIHWo8nZioVA_H2LXiYFJ';
   const SUPABASE_TABLE = SUPABASE_URL + '/rest/v1/grader_accounts';
+  const SUPABASE_TRADES_TABLE = SUPABASE_URL + '/rest/v1/grader_trade_offers';
   const supabaseHeaders = {
     'apikey': SUPABASE_KEY,
     'Authorization': 'Bearer ' + SUPABASE_KEY,
@@ -1158,6 +1496,10 @@
       inventory: row.inventory || [],
       totalSpins: row.total_spins || 0,
       shells: row.shells || 0,
+      bpXp: row.bp_xp || 0,
+      bpClaimedLevels: row.bp_claimed_levels || [],
+      pirateDate: row.pirate_date || '',
+      pirateBought: row.pirate_bought || [],
     };
   }
 
@@ -1183,6 +1525,10 @@
       inventory: [],
       total_spins: 0,
       shells: 0,
+      bp_xp: 0,
+      bp_claimed_levels: [],
+      pirate_date: '',
+      pirate_bought: [],
     };
     const res = await fetch(SUPABASE_TABLE, {
       method: 'POST',
@@ -1209,6 +1555,10 @@
           inventory: inventoryData,
           total_spins: totalSpins,
           shells,
+          bp_xp: bpXp,
+          bp_claimed_levels: bpClaimedLevels,
+          pirate_date: todayUTCString(),
+          pirate_bought: pirateBoughtToday,
         }),
       });
     } catch(e){ /* best-effort save; ignore transient network failures in this demo */ }
@@ -1220,6 +1570,12 @@
     record.inventory.forEach(it => inventoryData.push(it));
     totalSpins = record.totalSpins || 0;
     shells = record.shells || 0;
+    bpXp = record.bpXp || 0;
+    bpClaimedLevels = record.bpClaimedLevels || [];
+    // Pirate purchases only carry over if they're from today (UTC) — a new
+    // day means a fresh set of offers and a clean slate of what's "bought".
+    pirateBoughtToday = (record.pirateDate === todayUTCString()) ? (record.pirateBought || []) : [];
+    pirateOffersCache = null; // force regeneration under the (possibly new) day's seed
     selectedStakeIndex = inventoryData.length ? 0 : -1;
     selectedChance = null;
     currentTarget = null;
@@ -1284,12 +1640,57 @@
   }
 
   // ===== Tabs =====
+  const currentTabLabel = document.getElementById('currentTabLabel');
+  const hamburgerDropdown = document.getElementById('hamburgerDropdown');
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+
+  if(hamburgerBtn && hamburgerDropdown){
+    hamburgerBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      hamburgerDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', (e)=>{
+      if(!hamburgerDropdown.contains(e.target) && e.target !== hamburgerBtn){
+        hamburgerDropdown.classList.remove('open');
+      }
+    });
+  }
+
+  const whatsNewBtn = document.getElementById('whatsNewBtn');
+  const whatsNewModal = document.getElementById('whatsNewModal');
+  const whatsNewClose = document.getElementById('whatsNewClose');
+  if(whatsNewBtn && whatsNewModal){
+    whatsNewBtn.addEventListener('click', ()=>{
+      whatsNewModal.classList.add('open');
+      lockBodyScroll();
+    });
+  }
+  if(whatsNewClose && whatsNewModal){
+    whatsNewClose.addEventListener('click', ()=>{
+      whatsNewModal.classList.remove('open');
+      unlockBodyScroll();
+    });
+  }
+  if(whatsNewModal){
+    whatsNewModal.addEventListener('click', (e)=>{
+      if(e.target === whatsNewModal){
+        whatsNewModal.classList.remove('open');
+        unlockBodyScroll();
+      }
+    });
+  }
+
   document.querySelectorAll('.tab-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
       document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      if(currentTabLabel) currentTabLabel.textContent = btn.textContent.trim();
+      if(hamburgerDropdown) hamburgerDropdown.classList.remove('open');
+      if(btn.dataset.tab === 'trade' && typeof renderIncomingTrades === 'function'){
+        renderIncomingTrades();
+      }
     });
   });
 
@@ -1458,8 +1859,14 @@
           color: def.grad[0],
           label: 'Летнее',
           rarity: 'summer',
+          grad: def.grad,
+          accent: def.accent,
+          body: def.body,
+          dots: def.dots,
         });
         if(selectedStakeIndex === -1) selectedStakeIndex = inventoryData.length - 1;
+        shellExchangeNote.textContent = `Куплено: «${def.name}» — теперь в инвентаре.`;
+        shellExchangeNote.className = 'shell-exchange-note success';
         renderAll();
       });
       summerGrid.appendChild(div);
@@ -1562,6 +1969,313 @@
     clickerBtn.addEventListener('click', doClickerClick);
   }
 
+  // ===== Battlepass =====
+  const bpLevelLabel = document.getElementById('bpLevelLabel');
+  const bpXpCurrent = document.getElementById('bpXpCurrent');
+  const bpXpNeeded = document.getElementById('bpXpNeeded');
+  const bpProgressFill = document.getElementById('bpProgressFill');
+  const bpTrack = document.getElementById('bpTrack');
+
+  function bpCurrentLevel(){
+    // Level N is reached once bpXp >= N * BP_XP_PER_LEVEL, capped at BP_MAX_LEVEL.
+    return Math.min(BP_MAX_LEVEL, Math.floor(bpXp / BP_XP_PER_LEVEL));
+  }
+
+  function claimBattlepassReward(level){
+    if(bpClaimedLevels.includes(level)) return;
+    if(bpCurrentLevel() < level) return;
+    const reward = BATTLEPASS_REWARDS.find(r => r.level === level);
+    if(!reward) return;
+    if(reward.type === 'credits' || reward.type === 'finale'){
+      credits += reward.credits || 0;
+    }
+    if(reward.type === 'shells' || reward.type === 'finale'){
+      shells += reward.shells || 0;
+    }
+    if(reward.type === 'summer'){
+      inventoryData.push({
+        id: uid(),
+        isSummer: true,
+        shape: reward.skin.shape,
+        name: reward.skin.name,
+        price: reward.skin.price * SHELL_EXCHANGE_RATE,
+        color: reward.skin.grad[0],
+        label: 'Летнее',
+        rarity: 'summer',
+        grad: reward.skin.grad,
+        accent: reward.skin.accent,
+        body: reward.skin.body,
+        dots: reward.skin.dots,
+      });
+    }
+    bpClaimedLevels.push(level);
+    playChime(true);
+    renderAll();
+  }
+
+  function renderBattlepassTab(){
+    if(!bpTrack) return;
+    const level = bpCurrentLevel();
+    const xpIntoLevel = bpXp - level * BP_XP_PER_LEVEL;
+    const xpForNextLevel = level >= BP_MAX_LEVEL ? 0 : BP_XP_PER_LEVEL;
+
+    bpLevelLabel.textContent = level;
+    bpXpCurrent.textContent = level >= BP_MAX_LEVEL ? BP_XP_PER_LEVEL : Math.max(0, xpIntoLevel);
+    bpXpNeeded.textContent = level >= BP_MAX_LEVEL ? BP_XP_PER_LEVEL : xpForNextLevel;
+    const pct = level >= BP_MAX_LEVEL ? 100 : Math.min(100, (Math.max(0, xpIntoLevel) / xpForNextLevel) * 100);
+    bpProgressFill.style.width = pct + '%';
+
+    bpTrack.innerHTML = '';
+    BATTLEPASS_REWARDS.forEach(reward => {
+      const unlocked = level >= reward.level;
+      const claimed = bpClaimedLevels.includes(reward.level);
+      const div = document.createElement('div');
+      div.className = 'bp-reward' + (claimed ? ' claimed' : '') + (!unlocked ? ' locked' : '');
+      div.innerHTML = `
+        <div class="bp-level-num">Ур. ${reward.level}</div>
+        <div class="icon-box">${bpRewardIconHTML(reward)}</div>
+        <div class="bp-reward-label">${bpRewardLabel(reward)}</div>
+        ${claimed
+          ? '<div class="bp-claimed-tag">Получено</div>'
+          : unlocked
+            ? '<button class="bp-claim-btn" type="button">Забрать</button>'
+            : '<div class="bp-locked-tag">Заблокировано</div>'}
+      `;
+      if(unlocked && !claimed){
+        div.querySelector('.bp-claim-btn').addEventListener('click', (e)=>{
+          e.stopPropagation();
+          claimBattlepassReward(reward.level);
+        });
+      }
+      bpTrack.appendChild(div);
+    });
+  }
+
+  // ===== Player-to-player trading (via Supabase grader_trade_offers table) =====
+  const tradeItemSelect = document.getElementById('tradeItemSelect');
+  const tradeToUsername = document.getElementById('tradeToUsername');
+  const tradeSendBtn = document.getElementById('tradeSendBtn');
+  const tradeSendNote = document.getElementById('tradeSendNote');
+  const incomingTradesList = document.getElementById('incomingTradesList');
+
+  function renderTradeSendForm(){
+    if(!tradeItemSelect) return;
+    tradeItemSelect.innerHTML = '';
+    if(inventoryData.length === 0){
+      tradeItemSelect.innerHTML = '<option value="">Нет предметов для отправки</option>';
+      tradeSendBtn.disabled = true;
+      return;
+    }
+    tradeSendBtn.disabled = false;
+    inventoryData.forEach((item, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = `${item.name} (${item.label || item.rarity})`;
+      tradeItemSelect.appendChild(opt);
+    });
+  }
+
+  async function sendTradeOffer(){
+    const idx = parseInt(tradeItemSelect.value, 10);
+    const toUser = tradeToUsername.value.trim();
+    tradeSendNote.className = 'trade-send-note';
+    if(isNaN(idx) || !inventoryData[idx]){
+      tradeSendNote.textContent = 'Выбери предмет для отправки.';
+      tradeSendNote.classList.add('error');
+      return;
+    }
+    if(!toUser){
+      tradeSendNote.textContent = 'Введи никнейм друга.';
+      tradeSendNote.classList.add('error');
+      return;
+    }
+    if(toUser.toLowerCase() === currentUser.toLowerCase()){
+      tradeSendNote.textContent = 'Нельзя отправить предложение самому себе.';
+      tradeSendNote.classList.add('error');
+      return;
+    }
+    tradeSendBtn.disabled = true;
+    try{
+      const targetAccount = await getAccount(toUser);
+      if(!targetAccount){
+        tradeSendNote.textContent = 'Такого игрока не существует.';
+        tradeSendNote.classList.add('error');
+        tradeSendBtn.disabled = false;
+        return;
+      }
+      const item = inventoryData[idx];
+      const res = await fetch(SUPABASE_TRADES_TABLE, {
+        method: 'POST',
+        headers: { ...supabaseHeaders, 'Prefer': 'return=representation' },
+        body: JSON.stringify({
+          from_username: currentUser.toLowerCase(),
+          to_username: toUser.toLowerCase(),
+          item,
+          status: 'pending',
+        }),
+      });
+      if(!res.ok){
+        const errText = await res.text().catch(()=>'');
+        throw new Error('Код ' + res.status + '. ' + errText.slice(0,120));
+      }
+      // Remove the item from the sender's inventory immediately — it's now
+      // "in transit" and only returns if the offer is declined.
+      inventoryData.splice(idx, 1);
+      selectedStakeIndex = inventoryData.length ? Math.min(selectedStakeIndex, inventoryData.length - 1) : -1;
+      tradeSendNote.textContent = `Предложение отправлено игроку ${targetAccount.username}.`;
+      tradeSendNote.classList.add('success');
+      tradeToUsername.value = '';
+      renderAll();
+    } catch(err){
+      tradeSendNote.textContent = 'Не удалось отправить предложение: ' + err.message;
+      tradeSendNote.classList.add('error');
+    }
+    tradeSendBtn.disabled = false;
+  }
+
+  if(tradeSendBtn){
+    tradeSendBtn.addEventListener('click', sendTradeOffer);
+  }
+
+  async function fetchIncomingTrades(){
+    if(!currentUser) return [];
+    try{
+      const url = SUPABASE_TRADES_TABLE + '?to_username=eq.' + encodeURIComponent(currentUser.toLowerCase())
+        + '&status=eq.pending&order=created_at.desc';
+      const res = await fetch(url, { headers: supabaseHeaders });
+      if(!res.ok) return [];
+      return await res.json();
+    } catch(e){ return []; }
+  }
+
+  async function respondToTrade(offer, accept){
+    try{
+      const url = SUPABASE_TRADES_TABLE + '?id=eq.' + encodeURIComponent(offer.id);
+      await fetch(url, {
+        method: 'PATCH',
+        headers: supabaseHeaders,
+        body: JSON.stringify({ status: accept ? 'accepted' : 'declined' }),
+      });
+      if(accept){
+        inventoryData.push({ ...offer.item, id: uid() });
+        if(selectedStakeIndex === -1) selectedStakeIndex = inventoryData.length - 1;
+      } else {
+        // Declined trades return the item to the sender's inventory.
+        const senderAccount = await getAccount(offer.from_username);
+        if(senderAccount){
+          const returnedInventory = [...senderAccount.inventory, { ...offer.item, id: uid() }];
+          const senderUrl = SUPABASE_TABLE + '?username=eq.' + encodeURIComponent(offer.from_username);
+          await fetch(senderUrl, {
+            method: 'PATCH',
+            headers: supabaseHeaders,
+            body: JSON.stringify({ inventory: returnedInventory }),
+          });
+        }
+      }
+      renderAll();
+    } catch(e){ /* best-effort; the offer stays pending if this fails, user can retry */ }
+  }
+
+  async function renderIncomingTrades(){
+    if(!incomingTradesList) return;
+    const offers = await fetchIncomingTrades();
+    incomingTradesList.innerHTML = '';
+    if(offers.length === 0){
+      incomingTradesList.innerHTML = '<div class="empty-note">Нет входящих предложений.</div>';
+      return;
+    }
+    offers.forEach(offer => {
+      const item = offer.item;
+      const div = document.createElement('div');
+      div.className = 'trade-offer-card';
+      div.innerHTML = `
+        <div class="icon-box">${iconHTML(item)}</div>
+        <div class="trade-offer-meta">
+          <div class="trade-offer-from">От игрока ${offer.from_username}</div>
+          <div class="trade-offer-name">${item.name}</div>
+        </div>
+        <div class="trade-offer-actions">
+          <button class="trade-accept-btn" type="button">Принять</button>
+          <button class="trade-decline-btn" type="button">Отклонить</button>
+        </div>
+      `;
+      div.querySelector('.trade-accept-btn').addEventListener('click', () => respondToTrade(offer, true));
+      div.querySelector('.trade-decline-btn').addEventListener('click', () => respondToTrade(offer, false));
+      incomingTradesList.appendChild(div);
+    });
+  }
+
+  // ===== Pirate tab render + purchase =====
+  const pirateGrid = document.getElementById('pirateGrid');
+  const pirateTimer = document.getElementById('pirateTimer');
+
+  function msUntilNextUTCMidnight(){
+    const now = new Date();
+    const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()+1, 0, 0, 0));
+    return next.getTime() - now.getTime();
+  }
+  function formatHMS(ms){
+    const totalSec = Math.max(0, Math.floor(ms/1000));
+    const h = Math.floor(totalSec/3600);
+    const m = Math.floor((totalSec%3600)/60);
+    const s = totalSec%60;
+    return `${h}ч ${m}м ${s}с`;
+  }
+
+  function buyPirateOffer(index, offer){
+    if(pirateBoughtToday.includes(index)) return;
+    if(credits < offer.shownItem.price) return;
+    credits -= offer.shownItem.price;
+    let received;
+    if(offer.isScam){
+      // The bluff: player pays for what looks like the shown item, but
+      // actually receives a cheap common-tier item instead.
+      received = makeItem('common');
+    } else {
+      received = { ...offer.shownItem, id: uid() };
+    }
+    inventoryData.push(received);
+    if(selectedStakeIndex === -1) selectedStakeIndex = inventoryData.length - 1;
+    pirateBoughtToday.push(index);
+    resultLine && (resultLine.textContent = offer.isScam
+      ? `Пират обманул! Вместо «${offer.shownItem.name}» ты получил «${received.name}».`
+      : `Честная сделка! Получен «${received.name}».`);
+    renderAll();
+  }
+
+  function renderPirateTab(){
+    if(!pirateGrid) return;
+    if(!pirateOffersCache) pirateOffersCache = getPirateOffers();
+    const offers = pirateOffersCache;
+
+    if(pirateTimer){
+      pirateTimer.textContent = `Новый товар через: ${formatHMS(msUntilNextUTCMidnight())}`;
+    }
+
+    pirateGrid.innerHTML = '';
+    offers.forEach((offer, i) => {
+      const bought = pirateBoughtToday.includes(i);
+      const affordable = credits >= offer.shownItem.price;
+      const div = document.createElement('div');
+      div.className = 'item-card pirate-card';
+      div.innerHTML = `
+        <div class="icon-box">${iconHTML(offer.shownItem)}</div>
+        <div class="name">${offer.shownItem.name}</div>
+        <div class="tier" style="color:${offer.shownItem.color}">${offer.shownItem.label}</div>
+        <div class="price">${fmtPrice(offer.shownItem.price)}</div>
+        <div class="pirate-warn">Может обмануть</div>
+        <button class="buy-btn" type="button" ${(bought || !affordable) ? 'disabled' : ''}>${bought ? 'Куплено' : 'Купить'}</button>
+      `;
+      if(!bought){
+        div.querySelector('.buy-btn').addEventListener('click', (e)=>{
+          e.stopPropagation();
+          buyPirateOffer(i, offer);
+        });
+      }
+      pirateGrid.appendChild(div);
+    });
+  }
+
   // ===== Trade boxes + wheel state =====
   function renderTradeBoxes(){
     const stake = currentStake();
@@ -1645,6 +2359,9 @@
     renderPrayerTab();
     renderProfileTab();
     renderClickerTab();
+    renderBattlepassTab();
+    renderTradeSendForm();
+    renderPirateTab();
     updateHeaderStats();
     saveAccountProgress();
   }
@@ -1708,6 +2425,7 @@
     spinning = true;
     spinBtn.disabled = true;
     totalSpins++;
+    bpXp = Math.min(bpXp + BP_XP_PER_SPIN, BP_MAX_LEVEL * BP_XP_PER_LEVEL);
     resultLine.textContent = `На кону: «${stake.name}» → «${currentTarget.name}». Крутим...`;
     resultLine.className = 'result-line';
 
@@ -2074,6 +2792,14 @@
       }
     }).catch(()=>{});
   });
+
+  // Lightweight tick: only refreshes the pirate countdown text, not the whole
+  // grid, so it doesn't disturb button states or in-progress interactions.
+  setInterval(()=>{
+    if(pirateTimer && currentUser){
+      pirateTimer.textContent = `Новый товар через: ${formatHMS(msUntilNextUTCMidnight())}`;
+    }
+  }, 1000);
 })();
 </script>
 
