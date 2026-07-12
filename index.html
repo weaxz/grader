@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <title>GRADER — демо апгрейдер (не на деньги)</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bgGrad%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%231c1611%22%2F%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%232a2119%22%2F%3E%20%3C%2FlinearGradient%3E%20%3ClinearGradient%20id%3D%22metalGrad%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff9ec4%22%2F%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23c9457a%22%2F%3E%20%3C%2FlinearGradient%3E%20%3ClinearGradient%20id%3D%22woodGrad%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ffd23f%22%2F%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23e0a80f%22%2F%3E%20%3C%2FlinearGradient%3E%20%3ClinearGradient%20id%3D%22magGrad%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%235eead4%22%2F%3E%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230f9488%22%2F%3E%20%3C%2FlinearGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22url%28%23bgGrad%29%22%2F%3E%20%3Cg%20transform%3D%22rotate%28-8%2032%2032%29%20translate%28-2%20-1%29%22%3E%20%3C%21--%20stock%20--%3E%20%3Cpath%20d%3D%22M4%2041%20L17%2036%20L19%2043%20L6%2048%20Z%22%20fill%3D%22url%28%23woodGrad%29%22%2F%3E%20%3C%21--%20receiver%20body%20%28bigger%2C%20simpler%20silhouette%29%20--%3E%20%3Cpath%20d%3D%22M15%2035%20L48%2027%20L51%2033%20L49%2039%20L18%2044%20Z%22%20fill%3D%22url%28%23metalGrad%29%22%2F%3E%20%3C%21--%20pistol%20grip%20--%3E%20%3Cpath%20d%3D%22M21%2040%20L27%2039%20L26%2048%20L19%2047%20Z%22%20fill%3D%22%233a2410%22%2F%3E%20%3C%21--%20banana%20magazine%2C%20bolder%20curve%20--%3E%20%3Cpath%20d%3D%22M29%2039%20C%2027%2046%2C%2024%2053%2C%2018%2058%20C%2025%2056%2C%2031%2051%2C%2034%2045%20C%2035%2042%2C%2035%2040%2C%2033%2038%20Z%22%20fill%3D%22url%28%23magGrad%29%22%2F%3E%20%3C%21--%20handguard%20--%3E%20%3Cpath%20d%3D%22M42%2028%20L54%2024%20L56%2030%20L44%2034%20Z%22%20fill%3D%22url%28%23woodGrad%29%22%2F%3E%20%3C%21--%20barrel%20%2B%20muzzle%2C%20thicker%20so%20it%20survives%20shrinking%20--%3E%20%3Crect%20x%3D%2252%22%20y%3D%2224%22%20width%3D%2210%22%20height%3D%224.5%22%20fill%3D%22%23c7ced9%22%2F%3E%20%3Crect%20x%3D%2259%22%20y%3D%2223%22%20width%3D%225%22%20height%3D%226.5%22%20rx%3D%221.5%22%20fill%3D%22%238a8f99%22%2F%3E%20%3C%21--%20top%20rail%20highlight%20--%3E%20%3Cpath%20d%3D%22M17%2033%20L47%2025.5%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.4%22%20opacity%3D%220.4%22%20fill%3D%22none%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -52,10 +53,8 @@
     display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
   }
   .logo{ display:flex; align-items:center; gap:10px; font-size:22px; font-weight:700; letter-spacing:.02em; }
-  .logo .mark{
-    width:30px;height:30px;border-radius:7px; background:var(--grad-blue);
-    display:flex;align-items:center;justify-content:center; color:#0b0c10; font-weight:700; font-size:15px;
-  }
+  .logo .mark{ width:30px; height:30px; display:flex; align-items:center; justify-content:center; }
+  .logo .mark svg{ width:100%; height:100%; display:block; }
   .header-stats{ display:flex; gap:10px; flex-wrap:wrap; }
   .stat-chip{
     font-family:'Chakra Petch', sans-serif;
@@ -191,7 +190,7 @@
   /* ===== UPGRADE MACHINE ===== */
   .machine{
     background:var(--panel); border:1px solid var(--line); border-radius:18px;
-    padding:30px; display:grid; grid-template-columns: 1fr 300px; gap:34px; align-items:center;
+    padding:30px; display:flex; flex-direction:column; align-items:center; gap:28px;
   }
 
   .wheel-col{ display:flex; flex-direction:column; align-items:center; gap:16px; }
@@ -214,7 +213,13 @@
   }
   .speed-toggle.fast .speed-dot{ background:var(--orange); box-shadow:0 0 6px var(--orange); }
 
-  .controls-col{ display:flex; flex-direction:column; gap:16px; }
+  .controls-col{ display:flex; flex-direction:column; gap:16px; width:100%; max-width:640px; }
+  .controls-col .trade-row,
+  .controls-col .topup-block,
+  .controls-col .chance-presets,
+  .controls-col .chance-note,
+  .controls-col .spin-btn,
+  .controls-col .result-line{ max-width:460px; align-self:center; width:100%; }
 
   .trade-row{ display:flex; align-items:center; gap:10px; }
   .trade-box{
@@ -234,6 +239,39 @@
   .trade-box .price{ font-size:10.5px; color:var(--orange); margin-top:2px; }
   .trade-arrow{ color:var(--muted); font-size:16px; flex:0 0 auto; }
 
+  .stake-mini-icons{ display:flex; gap:4px; flex:0 0 auto; }
+  .stake-mini-icon{
+    width:30px; height:30px; border-radius:6px; background:var(--bg-2);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .stake-mini-icon svg{ width:20px; height:20px; }
+  .stake-mini-more{
+    width:30px; height:30px; border-radius:6px; background:var(--panel-2);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Chakra Petch', sans-serif; font-size:10px; color:var(--muted);
+  }
+  .topup-note.inline, .price .topup-note{ font-size:9.5px; color:var(--orange); font-weight:400; }
+
+  .topup-block{
+    background:var(--panel-2); border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; display:flex; flex-direction:column; gap:8px;
+  }
+  .topup-header{ display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap; }
+  .topup-label{ font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+  .topup-value{ font-family:'Chakra Petch', sans-serif; font-size:12.5px; color:var(--muted); }
+  .topup-value b{ color:var(--orange); }
+  #topupBonusLabel{ color:var(--blue); }
+  .topup-slider{
+    -webkit-appearance:none; width:100%; height:6px; border-radius:4px;
+    background:var(--panel); outline:none; cursor:pointer;
+  }
+  .topup-slider::-webkit-slider-thumb{
+    -webkit-appearance:none; width:16px; height:16px; border-radius:50%;
+    background:var(--grad-blue); cursor:pointer; border:2px solid #1a0f05;
+  }
+  .topup-slider:disabled{ opacity:.4; cursor:not-allowed; }
+  .topup-note{ font-size:10.5px; color:var(--muted); line-height:1.4; }
+
   .chance-presets{ display:flex; gap:8px; }
   .chance-btn{
     flex:1; font-family:'Chakra Petch', sans-serif; font-size:13.5px; font-weight:700;
@@ -243,6 +281,34 @@
   .chance-btn:hover{ border-color:var(--cyan); }
   .chance-btn.active{ border-color:var(--cyan); background:rgba(94,234,212,.12); color:var(--cyan); }
   .chance-btn:disabled{ opacity:.4; cursor:not-allowed; }
+
+  .chance-gear-btn{
+    flex:0 0 auto; width:38px; font-size:15px;
+    background:var(--panel-2); border:1px solid var(--line); color:var(--text);
+    border-radius:9px; cursor:pointer; transition:border-color .15s, background .15s;
+  }
+  .chance-gear-btn:hover{ border-color:var(--cyan); }
+  .chance-gear-btn.active{ border-color:var(--cyan); background:rgba(94,234,212,.12); }
+
+  .custom-chance-panel{
+    display:none; flex-direction:column; gap:8px;
+    background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:12px 14px;
+  }
+  .custom-chance-panel.open{ display:flex; }
+  .custom-chance-row{ display:flex; gap:8px; }
+  .custom-chance-input{
+    flex:1; min-width:0; font-family:'Inter', sans-serif; background:var(--panel); border:1px solid var(--line);
+    color:var(--text); border-radius:8px; padding:9px 12px; font-size:14px; outline:none;
+    transition:border-color .15s;
+  }
+  .custom-chance-input:focus{ border-color:var(--cyan); }
+  .custom-chance-apply{
+    font-family:'Chakra Petch', sans-serif; font-size:12.5px; font-weight:700;
+    background:var(--grad-blue); color:#1a0f05; border:none; border-radius:8px;
+    padding:9px 14px; cursor:pointer; white-space:nowrap; transition:filter .15s;
+  }
+  .custom-chance-apply:hover{ filter:brightness(1.1); }
+  .custom-chance-error{ font-size:11px; color:var(--red); min-height:14px; }
 
   .chance-note{ font-size:11px; color:var(--muted); }
 
@@ -261,10 +327,6 @@
   }
   .result-line.win{ color:var(--cyan); }
   .result-line.lose{ color:var(--red); }
-
-  @media (max-width:720px){
-    .machine{ grid-template-columns:1fr; }
-  }
 
   @media (max-width:600px){
     .wrap{ padding:0 16px; }
@@ -428,6 +490,25 @@
   .auth-overlay.fading-out{ opacity:0; pointer-events:none; }
   #gameWrap{ opacity:0; transition:opacity .35s ease; }
   #gameWrap.visible{ opacity:1; }
+
+  .auth-float-bg{
+    position:absolute; inset:0; overflow:hidden; z-index:0; pointer-events:none;
+  }
+  .auth-float-item{
+    position:absolute; opacity:0.16; filter:blur(0.3px);
+    animation-name:authFloat; animation-timing-function:ease-in-out; animation-iteration-count:infinite;
+    will-change:transform;
+  }
+  .auth-float-item svg{ width:100%; height:100%; display:block; }
+  @keyframes authFloat{
+    0%{ transform:translate(0,0) rotate(var(--float-rot-start,0deg)); }
+    50%{ transform:translate(var(--float-x,18px), var(--float-y,-24px)) rotate(var(--float-rot-end,12deg)); }
+    100%{ transform:translate(0,0) rotate(var(--float-rot-start,0deg)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .auth-float-item{ animation:none; }
+  }
+  .auth-box{ position:relative; z-index:1; }
   .auth-box{
     width:100%; max-width:380px; background:var(--panel); border:1px solid var(--line);
     border-radius:18px; padding:32px 28px; display:flex; flex-direction:column; gap:16px;
@@ -477,6 +558,12 @@
   .profile-stat{ display:flex; flex-direction:column; align-items:center; gap:2px; }
   .profile-stat-num{ font-family:'Chakra Petch', sans-serif; font-size:18px; font-weight:700; color:var(--cyan); }
   .profile-stat-label{ font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
+  .profile-collector-badge{
+    font-family:'Chakra Petch', sans-serif; font-size:12px; font-weight:600;
+    background:linear-gradient(90deg, rgba(255,176,32,.14), rgba(45,212,191,.14));
+    border:1px solid var(--line); border-radius:10px; padding:9px 16px; width:100%; text-align:center;
+  }
+  .profile-collector-badge.complete{ color:var(--orange); border-color:var(--orange); }
   .profile-logout-btn{
     font-family:'Chakra Petch', sans-serif; background:var(--panel-2); border:1px solid var(--line); color:var(--red);
     border-radius:10px; padding:11px 22px; font-size:13px; font-weight:600; cursor:pointer; width:100%;
@@ -529,6 +616,23 @@
   .shell-exchange-note{ font-size:12px; color:var(--muted); min-height:16px; }
   .shell-exchange-note.error{ color:var(--red); }
   .shell-exchange-note.success{ color:var(--cyan); }
+
+  .summer-deadline-note{
+    font-family:'Chakra Petch', sans-serif; font-size:12.5px; color:var(--orange);
+    margin-bottom:16px; letter-spacing:.02em;
+  }
+  .summer-deadline-note.closed{ color:var(--muted); }
+
+  .summer-collection-box{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:16px 20px; margin-bottom:22px;
+  }
+  .summer-collection-label{
+    font-family:'Chakra Petch', sans-serif; font-size:13.5px; font-weight:600; margin-bottom:10px;
+  }
+  .summer-collection-bar-bg{ height:10px; border-radius:6px; background:var(--panel-2); overflow:hidden; }
+  .summer-collection-bar-fill{ height:100%; background:var(--grad-blue); transition:width .3s ease; }
+  .summer-collection-hint{ font-size:11.5px; color:var(--muted); margin-top:8px; }
 
   /* ===== CLICKER ===== */
   .clicker-box{
@@ -711,8 +815,9 @@
 
 <!-- ===== AUTH SCREEN ===== -->
 <div class="auth-overlay" id="authOverlay">
+  <div class="auth-float-bg" id="authFloatBg"></div>
   <div class="auth-box">
-    <div class="logo auth-logo"><span class="mark">G</span> GRADER</div>
+    <div class="logo auth-logo"><span class="mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="authBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1c1611"/><stop offset="100%" stop-color="#2a2119"/></linearGradient><linearGradient id="authMetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff9ec4"/><stop offset="100%" stop-color="#c9457a"/></linearGradient><linearGradient id="authWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffd23f"/><stop offset="100%" stop-color="#e0a80f"/></linearGradient><linearGradient id="authMag" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#0f9488"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#authBg)"/><g transform="rotate(-8 32 32) translate(-2 -1)"><path d="M4 41 L17 36 L19 43 L6 48 Z" fill="url(#authWood)"/><path d="M15 35 L48 27 L51 33 L49 39 L18 44 Z" fill="url(#authMetal)"/><path d="M21 40 L27 39 L26 48 L19 47 Z" fill="#3a2410"/><path d="M29 39 C 27 46, 24 53, 18 58 C 25 56, 31 51, 34 45 C 35 42, 35 40, 33 38 Z" fill="url(#authMag)"/><path d="M42 28 L54 24 L56 30 L44 34 Z" fill="url(#authWood)"/><rect x="52" y="24" width="10" height="4.5" fill="#c7ced9"/><rect x="59" y="23" width="5" height="6.5" rx="1.5" fill="#8a8f99"/><path d="M17 33 L47 25.5" stroke="#fff" stroke-width="1.4" opacity="0.4" fill="none"/></g></svg></span> GRADER</div>
     <div class="auth-tabs">
       <button class="auth-tab-btn active" data-authtab="login" type="button">Вход</button>
       <button class="auth-tab-btn" data-authtab="register" type="button">Регистрация</button>
@@ -736,14 +841,14 @@
       <button class="auth-submit" type="submit">Создать аккаунт</button>
     </form>
 
-    <p class="auth-note">Аккаунты хранятся в общей базе данных — можно войти под одним ником с любого устройства. Пароль не защищён криптографически, это демо для игры среди друзей, а не боевая система безопасности.<br>Готовый тестовый вход: <b>beta</b> / <b>beta123</b>.</p>
+    <p class="auth-note">Аккаунты хранятся в общей базе данных — можно войти под одним ником с любого устройства. Пароль не защищён криптографически, это демо для игры среди друзей, а не боевая система безопасности.</p>
   </div>
 </div>
 
 <div class="wrap" id="gameWrap" style="display:none;">
 
   <header class="top">
-    <div class="logo"><span class="mark">G</span> GRADER</div>
+    <div class="logo"><span class="mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="hdrBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1c1611"/><stop offset="100%" stop-color="#2a2119"/></linearGradient><linearGradient id="hdrMetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff9ec4"/><stop offset="100%" stop-color="#c9457a"/></linearGradient><linearGradient id="hdrWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffd23f"/><stop offset="100%" stop-color="#e0a80f"/></linearGradient><linearGradient id="hdrMag" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5eead4"/><stop offset="100%" stop-color="#0f9488"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#hdrBg)"/><g transform="rotate(-8 32 32) translate(-2 -1)"><path d="M4 41 L17 36 L19 43 L6 48 Z" fill="url(#hdrWood)"/><path d="M15 35 L48 27 L51 33 L49 39 L18 44 Z" fill="url(#hdrMetal)"/><path d="M21 40 L27 39 L26 48 L19 47 Z" fill="#3a2410"/><path d="M29 39 C 27 46, 24 53, 18 58 C 25 56, 31 51, 34 45 C 35 42, 35 40, 33 38 Z" fill="url(#hdrMag)"/><path d="M42 28 L54 24 L56 30 L44 34 Z" fill="url(#hdrWood)"/><rect x="52" y="24" width="10" height="4.5" fill="#c7ced9"/><rect x="59" y="23" width="5" height="6.5" rx="1.5" fill="#8a8f99"/><path d="M17 33 L47 25.5" stroke="#fff" stroke-width="1.4" opacity="0.4" fill="none"/></g></svg></span> GRADER</div>
     <div class="header-stats">
       <div class="stat-chip">Предметов: <b id="counterVal">0</b></div>
       <div class="stat-chip credits">Кредиты: <b id="creditsVal">1000</b></div>
@@ -786,11 +891,8 @@
 
   <!-- ===== UPGRADE TAB ===== -->
   <div class="tab-panel active" id="panel-upgrade">
-    <div class="step-label"><span class="n">1</span> Выбери предмет для ставки</div>
-    <div class="item-grid" id="stakeGrid"></div>
-
     <div class="section-gap">
-      <div class="step-label"><span class="n">2</span> Выбери шанс, затем желаемый предмет</div>
+      <div class="step-label"><span class="n">1</span> Колесо апгрейда</div>
       <div class="machine">
         <div class="wheel-col">
           <div class="wheel-shell">
@@ -833,10 +935,22 @@
         </div>
 
         <div class="controls-col">
+          <div class="step-label" style="margin:0 0 4px;"><span class="n">2</span> Выбери предмет(ы) для ставки</div>
+          <div class="item-grid" id="stakeGrid"></div>
+
           <div class="trade-row">
             <div class="trade-box" id="stakeBox"></div>
             <div class="trade-arrow">→</div>
             <div class="trade-box clickable" id="targetBox"></div>
+          </div>
+
+          <div class="topup-block" id="topupBlock">
+            <div class="topup-header">
+              <label class="topup-label">Докинуть кредитов к ставке</label>
+              <span class="topup-value"><b id="topupValueLabel">0</b> кр. <span id="topupBonusLabel"></span></span>
+            </div>
+            <input type="range" id="topupSlider" min="0" max="0" step="10" value="0" class="topup-slider">
+            <div class="topup-note" id="topupNote">Повышает цену ставки (доступ к более дорогой цели) и немного увеличивает шанс выигрыша.</div>
           </div>
 
           <div class="chance-presets" id="chancePresets">
@@ -844,7 +958,18 @@
             <button class="chance-btn" data-chance="30">30%</button>
             <button class="chance-btn" data-chance="50">50%</button>
             <button class="chance-btn" data-chance="75">75%</button>
+            <button class="chance-gear-btn" id="chanceGearBtn" type="button" title="Свой процент">⚙️</button>
           </div>
+
+          <div class="custom-chance-panel" id="customChancePanel">
+            <label class="topup-label">Свой процент (1–95%)</label>
+            <div class="custom-chance-row">
+              <input type="number" id="customChanceInput" min="1" max="95" step="1" placeholder="напр. 44" class="custom-chance-input">
+              <button class="custom-chance-apply" id="customChanceApply" type="button">Применить</button>
+            </div>
+            <div class="custom-chance-error" id="customChanceError"></div>
+          </div>
+
           <div class="chance-note" id="chanceNote">Выбери предмет для ставки, затем шанс.</div>
 
           <button class="spin-btn" id="spinBtn" disabled>Выбери предмет и шанс</button>
@@ -904,6 +1029,7 @@
         <div class="profile-stat"><span class="profile-stat-num" id="profileStatCredits">0</span><span class="profile-stat-label">кредитов</span></div>
         <div class="profile-stat"><span class="profile-stat-num" id="profileStatSpins">0</span><span class="profile-stat-label">прокруток</span></div>
       </div>
+      <div class="profile-collector-badge" id="profileCollectorBadge"></div>
       <button class="profile-logout-btn" id="logoutBtn" type="button">Выйти из аккаунта</button>
       <p class="profile-note">Прогресс сохраняется автоматически в общей базе данных — доступен с любого устройства под этим логином.</p>
     </div>
@@ -913,6 +1039,7 @@
   <div class="tab-panel" id="panel-summer">
     <div class="step-label summer-label"><span class="n">🍉</span> Летняя витрина — предметы сезона</div>
     <p class="summer-intro">Ограниченные летние отделки — арбуз, пальмы, закатный неон. Покупаются за <b>Ракушки</b> — отдельную летнюю валюту, которую можно выменять из кредитов ниже.</p>
+    <div class="summer-deadline-note" id="summerDeadlineNote"></div>
 
     <div class="shell-exchange">
       <div class="shell-balance">🐚 Ракушек: <b id="shellBalance">0</b></div>
@@ -922,6 +1049,8 @@
       </div>
       <div class="shell-exchange-note" id="shellExchangeNote"></div>
     </div>
+
+    <div class="summer-collection-box" id="summerCollectionBar"></div>
 
     <div class="item-grid" id="summerGrid"></div>
   </div>
@@ -992,9 +1121,10 @@
   <div class="tab-panel" id="panel-pirate">
     <div class="step-label"><span class="n">⚓</span> Пиратская распродажа</div>
     <p class="pirate-intro">Раз в реальный день к берегу причаливает пират с партией оружия дешевле обычного магазина. Он честный делец... по большей части. За вывеской неплохой пушки иногда прячется откровенный хлам — узнаешь только после покупки. Новый товар — завтра.</p>
+    <div class="pirate-timer" id="pirateTimer"></div>
 
     <div class="pirate-stall">
-      <svg viewBox="0 0 400 170" width="100%" height="auto" preserveAspectRatio="xMidYMid meet">
+      <svg class="pirate-stall-bg" viewBox="0 0 400 210" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="stallWood" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#8a5a2f"/>
@@ -1004,11 +1134,15 @@
             <stop offset="0%" stop-color="#6b4423"/>
             <stop offset="100%" stop-color="#432a14"/>
           </linearGradient>
+          <linearGradient id="stallPlank" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a0703f"/>
+            <stop offset="100%" stop-color="#7a4e26"/>
+          </linearGradient>
         </defs>
 
         <!-- back posts -->
-        <rect x="34" y="30" width="10" height="120" fill="url(#stallWoodDark)"/>
-        <rect x="356" y="30" width="10" height="120" fill="url(#stallWoodDark)"/>
+        <rect x="34" y="30" width="10" height="150" fill="url(#stallWoodDark)"/>
+        <rect x="356" y="30" width="10" height="150" fill="url(#stallWoodDark)"/>
 
         <!-- striped awning -->
         <g>
@@ -1022,15 +1156,7 @@
           <path d="M264 4 L302 34 L340 34 L302 8 Z" fill="#e8c99a"/>
           <path d="M302 8 L340 34 L380 34 L340 12 Z" fill="#c2452e"/>
         </g>
-
-        <!-- awning trim -->
         <path d="M18 32 h364 v8 h-364 z" fill="#8a2e1c"/>
-
-        <!-- counter -->
-        <rect x="20" y="118" width="360" height="14" fill="url(#stallWood)"/>
-        <rect x="20" y="132" width="360" height="8" fill="url(#stallWoodDark)"/>
-        <rect x="30" y="140" width="14" height="26" fill="url(#stallWoodDark)"/>
-        <rect x="356" y="140" width="14" height="26" fill="url(#stallWoodDark)"/>
 
         <!-- hanging sign -->
         <g>
@@ -1040,29 +1166,25 @@
           <text x="200" y="71" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-size="12" fill="#ffd23f" font-weight="700">ПИРАТ</text>
         </g>
 
-        <!-- barrel prop -->
-        <g>
-          <ellipse cx="60" cy="128" rx="18" ry="7" fill="#5c3a1c"/>
-          <rect x="42" y="98" width="36" height="30" fill="#8a5a2f"/>
-          <ellipse cx="60" cy="98" rx="18" ry="7" fill="#a0703f"/>
-          <rect x="42" y="106" width="36" height="4" fill="#3a2410"/>
-          <rect x="42" y="118" width="36" height="4" fill="#3a2410"/>
-        </g>
+        <!-- wide counter surface — items sit on top of this plank -->
+        <rect x="20" y="128" width="360" height="34" fill="url(#stallPlank)"/>
+        <rect x="20" y="128" width="360" height="6" fill="#5c3a1c" opacity="0.4"/>
+        <line x1="80" y1="128" x2="80" y2="162" stroke="#5c3a1c" stroke-width="1.5" opacity="0.5"/>
+        <line x1="160" y1="128" x2="160" y2="162" stroke="#5c3a1c" stroke-width="1.5" opacity="0.5"/>
+        <line x1="240" y1="128" x2="240" y2="162" stroke="#5c3a1c" stroke-width="1.5" opacity="0.5"/>
+        <line x1="320" y1="128" x2="320" y2="162" stroke="#5c3a1c" stroke-width="1.5" opacity="0.5"/>
 
-        <!-- crossed cutlasses prop -->
-        <g stroke="#c7ced9" stroke-width="3" stroke-linecap="round">
-          <line x1="320" y1="112" x2="350" y2="82"/>
-          <line x1="350" y1="112" x2="320" y2="82"/>
-        </g>
-        <g fill="#8a5a2f">
-          <rect x="317" y="108" width="6" height="10"/>
-          <rect x="347" y="108" width="6" height="10"/>
-        </g>
+        <!-- counter front panel -->
+        <rect x="20" y="162" width="360" height="14" fill="url(#stallWood)"/>
+        <rect x="20" y="176" width="360" height="8" fill="url(#stallWoodDark)"/>
+        <rect x="30" y="184" width="14" height="26" fill="url(#stallWoodDark)"/>
+        <rect x="356" y="184" width="14" height="26" fill="url(#stallWoodDark)"/>
       </svg>
-    </div>
 
-    <div class="pirate-timer" id="pirateTimer"></div>
-    <div class="item-grid" id="pirateGrid"></div>
+      <!-- item icons overlaid directly on the counter plank, positioned in
+           percentage coordinates matching the SVG's counter row above -->
+      <div class="pirate-stall-items" id="pirateStallItems"></div>
+    </div>
   </div>
 
   <footer>
@@ -1445,6 +1567,15 @@
     },
   ];
 
+  // Secret 7th skin — not purchasable in the showcase, only awarded once for
+  // collecting all 6 regular summer items at least once.
+  const SUMMER_SECRET_ITEM = {
+    name: 'Золотой пляжный трезубец', shape: 'goldenTrident', price: 500,
+    grad: ['#ffd23f', '#fff08a'], accent: '#8a5e05',
+    body: `<path d="M30 4 v10 M30 4 l-8 8 M30 4 l8 8 M22 12 v6 M38 12 v6 M30 14 v6 M22 18 h16 v3 h-16 z"/><rect x="27" y="21" width="6" height="26"/><rect x="18" y="45" width="24" height="6"/>`,
+    dots: `<circle cx="30" cy="9" r="1.4"/>`,
+  };
+
   function summerIconSVG(item){
     const uidTag = 'sg' + (__patternSeq++);
     const gradId = 'sgrad-' + uidTag;
@@ -1574,12 +1705,51 @@
     renderAll();
   }
 
+  // ===== Summer collection tracking =====
+  // Call this whenever the player obtains a summer item, from any source
+  // (showcase purchase, battlepass reward, or receiving one via trade).
+  // Marks its shape as collected; once all 6 regular summer shapes have been
+  // collected at least once, grants the secret 7th skin automatically.
+  function trackSummerCollection(shape){
+    if(!shape || shape === SUMMER_SECRET_ITEM.shape) return;
+    if(!summerCollected.includes(shape)) summerCollected.push(shape);
+    const allShapes = SUMMER_ITEMS.map(i => i.shape);
+    const gotAll = allShapes.every(s => summerCollected.includes(s));
+    if(gotAll && !summerSecretClaimed){
+      summerSecretClaimed = true;
+      inventoryData.push({
+        id: uid(),
+        isSummer: true,
+        shape: SUMMER_SECRET_ITEM.shape,
+        name: SUMMER_SECRET_ITEM.name,
+        price: SUMMER_SECRET_ITEM.price * SHELL_EXCHANGE_RATE,
+        color: SUMMER_SECRET_ITEM.grad[0],
+        label: 'Секретное летнее',
+        rarity: 'summer',
+        grad: SUMMER_SECRET_ITEM.grad,
+        accent: SUMMER_SECRET_ITEM.accent,
+        body: SUMMER_SECRET_ITEM.body,
+        dots: SUMMER_SECRET_ITEM.dots,
+      });
+      resultLine && (resultLine.textContent = `Коллекция собрана! Получен секретный «${SUMMER_SECRET_ITEM.name}».`);
+    }
+  }
+
   // ===== Battlepass constants (must be declared before getBattlepassRewards()
   // runs below, since it calls BP_MAX_LEVEL immediately at script load time) =====
   const CLICKER_COOLDOWN_MS = 4000;
   const CLICKER_REWARD_MIN = 10;
   const CLICKER_REWARD_MAX = 25;
   const SHELL_EXCHANGE_RATE = 5; // credits per shell
+  // Summer showcase closes August 1st (UTC) — after that, the showcase still
+  // shows owned/collected skins but purchasing new ones is disabled.
+  const SUMMER_DEADLINE = Date.UTC(2026, 7, 1, 0, 0, 0); // month is 0-indexed: 7 = August
+  function summerShowcaseClosed(){
+    return Date.now() >= SUMMER_DEADLINE;
+  }
+  function msUntilSummerDeadline(){
+    return SUMMER_DEADLINE - Date.now();
+  }
   const BP_XP_PER_SPIN = 10;
   const BP_XP_PER_LEVEL = 10;    // each spin grants exactly one level's worth of progress
   const BP_MAX_LEVEL = 40;
@@ -1645,8 +1815,15 @@
   const inventoryData = [];
   let credits = 1000;
   let selectedStakeIndex = inventoryData.length ? 0 : -1;
+  // Multi-stake selection for the upgrade tab: which inventory indices are
+  // currently staked together on one spin. Kept separate from
+  // selectedStakeIndex, which is used elsewhere purely as a "default slot to
+  // point at after adding a new item" pointer (shop purchases, trades, etc.)
+  // and isn't about the upgrade selection at all.
+  let selectedStakeIndices = [];
   let selectedChance = null;   // 30 | 50 | 75
   let currentTarget = null;    // chosen item to upgrade into
+  let creditTopUp = 0;         // extra credits added to the stake via the slider, boosts both target price reach and win chance
   let spinning = false;
   let habibiBuff = 0;          // percentage points added (or subtracted) to the next spin's real chance
   let praying = false;
@@ -1662,6 +1839,8 @@
   let questDate = '';             // UTC date string the current questProgress/questClaimed belong to
   let questProgress = {};         // { [questId]: count }
   let questClaimed = [];          // quest ids already claimed today
+  let summerCollected = [];       // shapes of summer items ever owned at least once (for collection tracking)
+  let summerSecretClaimed = false; // whether the 7th secret skin reward has been granted
 
   // ===== Account storage (Supabase — real shared database) =====
   // Accounts live in a Supabase Postgres table (grader_accounts), reachable
@@ -1710,6 +1889,8 @@
       questDate: row.quest_date || '',
       questProgress: row.quest_progress || {},
       questClaimed: row.quest_claimed || [],
+      summerCollected: row.summer_collected || [],
+      summerSecretClaimed: row.summer_secret_claimed || false,
     };
   }
 
@@ -1742,6 +1923,8 @@
       quest_date: '',
       quest_progress: {},
       quest_claimed: [],
+      summer_collected: [],
+      summer_secret_claimed: false,
     };
     const res = await fetch(SUPABASE_TABLE, {
       method: 'POST',
@@ -1775,6 +1958,8 @@
           quest_date: todayUTCString(),
           quest_progress: questProgress,
           quest_claimed: questClaimed,
+          summer_collected: summerCollected,
+          summer_secret_claimed: summerSecretClaimed,
         }),
       });
     } catch(e){ /* best-effort save; ignore transient network failures in this demo */ }
@@ -1797,6 +1982,8 @@
     questDate = todayUTCString();
     questProgress = isToday ? (record.questProgress || {}) : {};
     questClaimed = isToday ? (record.questClaimed || []) : [];
+    summerCollected = record.summerCollected || [];
+    summerSecretClaimed = record.summerSecretClaimed || false;
     selectedStakeIndex = inventoryData.length ? 0 : -1;
     selectedChance = null;
     currentTarget = null;
@@ -1915,8 +2102,37 @@
     });
   });
 
+  function currentStakeItems(){
+    return selectedStakeIndices
+      .filter(i => i >= 0 && i < inventoryData.length)
+      .map(i => inventoryData[i]);
+  }
+  function currentStakeBasePrice(){
+    return currentStakeItems().reduce((sum, it) => sum + it.price, 0);
+  }
+  function currentStakeTotalPrice(){
+    return currentStakeBasePrice() + creditTopUp;
+  }
+  // Kept for compatibility with code that only cares about "is anything staked"
+  // or wants a representative single item (e.g. for display fallbacks).
   function currentStake(){
-    return selectedStakeIndex >= 0 ? inventoryData[selectedStakeIndex] : null;
+    const items = currentStakeItems();
+    return items.length ? items[0] : null;
+  }
+
+  // Credit top-up bonus: every 20% of the stake's base price added as a
+  // top-up grants +1% chance, capped at +10% total, so it's a meaningful but
+  // not game-breaking way to "buy" a better shot at the same target.
+  function creditTopUpChanceBonus(){
+    const base = currentStakeBasePrice();
+    if(base <= 0 || creditTopUp <= 0) return 0;
+    const bonus = Math.floor((creditTopUp / base) * 5); // 20% topup -> 1%, scaled
+    return Math.min(10, bonus);
+  }
+  function maxCreditTopUp(){
+    // Never allow topping up with the player's entire balance — leave at
+    // least 10% of current credits untouched, per the "no risking it all" rule.
+    return Math.max(0, Math.floor(credits * 0.9));
   }
 
   function priceRangeForChance(stakePrice, chancePct){
@@ -1968,7 +2184,8 @@
     }
     inventoryData.forEach((item, i) => {
       const div = document.createElement('div');
-      div.className = 'item-card' + (i===selectedStakeIndex ? ' selected' : '');
+      const isSelected = selectedStakeIndices.includes(i);
+      div.className = 'item-card' + (isSelected ? ' selected' : '');
       div.innerHTML = `
         <div class="icon-box">${iconHTML(item)}</div>
         <div class="name">${item.name}</div>
@@ -1977,9 +2194,15 @@
       `;
       div.addEventListener('click', () => {
         if(spinning) return;
-        selectedStakeIndex = i;
+        const pos = selectedStakeIndices.indexOf(i);
+        if(pos === -1){
+          selectedStakeIndices.push(i);
+        } else {
+          selectedStakeIndices.splice(pos, 1);
+        }
         selectedChance = null;
         currentTarget = null;
+        creditTopUp = 0;
         renderAll();
       });
       stakeGrid.appendChild(div);
@@ -1996,21 +2219,29 @@
     inventoryData.forEach((item, i) => {
       const div = document.createElement('div');
       div.className = 'item-card';
-      const sellPrice = Math.round(item.price * 0.7);
+      const sellRate = item.isSummer ? 0.85 : 0.7;
+      const sellPrice = Math.round(item.price * sellRate);
       div.innerHTML = `
         <div class="icon-box">${iconHTML(item)}</div>
         <div class="name">${item.name}</div>
         <div class="tier" style="color:${item.color}">${item.label}</div>
         <div class="price">${fmtPrice(item.price)}</div>
-        <button class="sell-btn" type="button">Продать за ${sellPrice.toLocaleString('ru-RU')}</button>
+        <button class="sell-btn" type="button">Продать за ${sellPrice.toLocaleString('ru-RU')}${item.isSummer ? ' 🍉' : ''}</button>
       `;
       div.querySelector('.sell-btn').addEventListener('click', (e)=>{
         e.stopPropagation();
         credits += sellPrice;
         inventoryData.splice(i, 1);
         if(selectedStakeIndex >= inventoryData.length) selectedStakeIndex = inventoryData.length - 1;
+        // Keep the multi-stake selection in sync: drop the sold slot and
+        // shift down any selected indices that pointed past it, since the
+        // splice above just renumbered everything after position i.
+        selectedStakeIndices = selectedStakeIndices
+          .filter(idx => idx !== i)
+          .map(idx => idx > i ? idx - 1 : idx);
         selectedChance = null;
         currentTarget = null;
+        creditTopUp = 0;
         trackQuestProgress('sell');
         renderAll();
       });
@@ -2055,22 +2286,48 @@
   // inventory, its stored `price` is converted to the credit-equivalent (at
   // SHELL_EXCHANGE_RATE) so selling/staking it behaves like any other item.
   const summerGrid = document.getElementById('summerGrid');
+  const summerDeadlineNote = document.getElementById('summerDeadlineNote');
+  const summerCollectionBar = document.getElementById('summerCollectionBar');
+
   function renderSummerTab(){
     if(!summerGrid) return;
+
+    if(summerDeadlineNote){
+      const closed = summerShowcaseClosed();
+      summerDeadlineNote.textContent = closed
+        ? 'Летняя витрина закрыта — покупка новых скинов недоступна, но собранные остаются с тобой.'
+        : `Витрина закрывается 1 августа. Осталось: ${formatHMS(msUntilSummerDeadline())}`;
+      summerDeadlineNote.className = 'summer-deadline-note' + (closed ? ' closed' : '');
+    }
+
+    if(summerCollectionBar){
+      const allShapes = SUMMER_ITEMS.map(i => i.shape);
+      const collectedCount = allShapes.filter(s => summerCollected.includes(s)).length;
+      const pct = Math.round((collectedCount / allShapes.length) * 100);
+      summerCollectionBar.innerHTML = `
+        <div class="summer-collection-label">Коллекция: ${collectedCount} / ${allShapes.length}${summerSecretClaimed ? ' · 🏆 секретный скин получен' : ''}</div>
+        <div class="summer-collection-bar-bg"><div class="summer-collection-bar-fill" style="width:${pct}%"></div></div>
+        ${!summerSecretClaimed ? '<div class="summer-collection-hint">Собери все 6 хотя бы по разу — получишь секретный 7-й скин.</div>' : ''}
+      `;
+    }
+
     summerGrid.innerHTML = '';
+    const closed = summerShowcaseClosed();
     SUMMER_ITEMS.forEach(def => {
       const div = document.createElement('div');
       div.className = 'item-card summer-card';
-      const affordable = shells >= def.price;
+      const affordable = shells >= def.price && !closed;
+      const owned = summerCollected.includes(def.shape);
       div.innerHTML = `
         <div class="icon-box">${summerIconSVG(def)}</div>
-        <div class="name">${def.name}</div>
+        <div class="name">${def.name}${owned ? ' ✓' : ''}</div>
         <div class="tier" style="color:${def.grad[0]}">Летнее</div>
         <div class="price">🐚 ${def.price}</div>
-        <button class="buy-btn" type="button" ${affordable ? '' : 'disabled'}>Купить</button>
+        <button class="buy-btn" type="button" ${affordable ? '' : 'disabled'}>${closed ? 'Закрыто' : 'Купить'}</button>
       `;
       div.querySelector('.buy-btn').addEventListener('click', (e)=>{
         e.stopPropagation();
+        if(summerShowcaseClosed()) return;
         if(shells < def.price) return;
         shells -= def.price;
         inventoryData.push({
@@ -2089,6 +2346,7 @@
         });
         if(selectedStakeIndex === -1) selectedStakeIndex = inventoryData.length - 1;
         trackQuestProgress('buySummer');
+        trackSummerCollection(def.shape);
         shellExchangeNote.textContent = `Куплено: «${def.name}» — теперь в инвентаре.`;
         shellExchangeNote.className = 'shell-exchange-note success';
         renderAll();
@@ -2232,6 +2490,7 @@
         body: reward.skin.body,
         dots: reward.skin.dots,
       });
+      trackSummerCollection(reward.skin.shape);
     }
     bpClaimedLevels.push(level);
     playChime(true);
@@ -2401,6 +2660,9 @@
       // "in transit" and only returns if the offer is declined.
       inventoryData.splice(idx, 1);
       selectedStakeIndex = inventoryData.length ? Math.min(selectedStakeIndex, inventoryData.length - 1) : -1;
+      selectedStakeIndices = selectedStakeIndices
+        .filter(i => i !== idx)
+        .map(i => i > idx ? i - 1 : i);
       tradeSendNote.textContent = `Предложение отправлено игроку ${targetAccount.username}.`;
       tradeSendNote.classList.add('success');
       tradeToUsername.value = '';
@@ -2470,6 +2732,10 @@
       if(accept){
         inventoryData.push({ ...offer.item, id: uid() });
         if(selectedStakeIndex === -1) selectedStakeIndex = inventoryData.length - 1;
+        if(offer.item.isSummer){
+          trackSummerCollection(offer.item.shape);
+          playChime(true);
+        }
       } else {
         // Declined trades return the item to the sender's inventory.
         const senderAccount = await getAccount(offer.from_username);
@@ -2593,15 +2859,30 @@
 
   // ===== Trade boxes + wheel state =====
   function renderTradeBoxes(){
-    const stake = currentStake();
+    const items = currentStakeItems();
+    const basePrice = currentStakeBasePrice();
+    const totalPrice = currentStakeTotalPrice();
 
-    stakeBox.innerHTML = stake ? `
-      <div class="icon-box">${iconHTML(stake)}</div>
-      <div class="meta">
-        <div class="label">Ставка</div>
-        <div class="name">${stake.name}</div>
-        <div class="price">${fmtPrice(stake.price)}</div>
-      </div>` : `<div class="meta"><div class="label">Ставка</div><div class="name">Не выбрано</div></div>`;
+    if(items.length === 0){
+      stakeBox.innerHTML = `<div class="meta"><div class="label">Ставка</div><div class="name">Не выбрано</div></div>`;
+    } else if(items.length === 1){
+      stakeBox.innerHTML = `
+        <div class="icon-box">${iconHTML(items[0])}</div>
+        <div class="meta">
+          <div class="label">Ставка</div>
+          <div class="name">${items[0].name}</div>
+          <div class="price">${fmtPrice(totalPrice)}${creditTopUp > 0 ? ` <span class="topup-note">(+${fmtPrice(creditTopUp)} докинуто)</span>` : ''}</div>
+        </div>`;
+    } else {
+      const iconsHtml = items.slice(0, 4).map(it => `<div class="stake-mini-icon">${iconHTML(it)}</div>`).join('');
+      stakeBox.innerHTML = `
+        <div class="stake-mini-icons">${iconsHtml}${items.length > 4 ? `<div class="stake-mini-more">+${items.length-4}</div>` : ''}</div>
+        <div class="meta">
+          <div class="label">Ставка — ${items.length} предмета(ов)</div>
+          <div class="name">${fmtPrice(basePrice)} база${creditTopUp > 0 ? ` + ${fmtPrice(creditTopUp)}` : ''}</div>
+          <div class="price">Итого: ${fmtPrice(totalPrice)}</div>
+        </div>`;
+    }
 
     targetBox.innerHTML = currentTarget ? `
       <div class="icon-box">${iconHTML(currentTarget)}</div>
@@ -2616,13 +2897,16 @@
     chanceBtns.forEach(btn=>{
       const val = parseInt(btn.dataset.chance, 10);
       btn.classList.toggle('active', selectedChance === val);
-      btn.disabled = !currentStake();
+      btn.disabled = currentStakeItems().length === 0;
     });
   }
 
   function effectiveChance(){
     if(selectedChance === null) return null;
-    const withBuff = selectedChance + habibiBuff;
+    const items = currentStakeItems();
+    const summerBonus = items.some(it => it.isSummer) ? 5 : 0;
+    const topUpBonus = creditTopUpChanceBonus();
+    const withBuff = selectedChance + habibiBuff + summerBonus + topUpBonus;
     return Math.max(1, Math.min(99, withBuff));
   }
 
@@ -2640,26 +2924,79 @@
   }
 
   function renderButtonAndNote(){
-    const stake = currentStake();
-    if(!stake){
-      chanceNote.textContent = 'Выбери предмет для ставки, затем шанс.';
+    const items = currentStakeItems();
+    if(items.length === 0){
+      chanceNote.textContent = 'Выбери предмет(ы) для ставки, затем шанс.';
       spinBtn.disabled = true;
       spinBtn.textContent = inventoryData.length === 0 ? 'Нет предметов' : 'Выбери предмет и шанс';
       return;
     }
+    const totalPrice = currentStakeTotalPrice();
     if(!selectedChance || !currentTarget){
-      chanceNote.textContent = `Ставка: ${fmtPrice(stake.price)}. Выбери шанс апгрейда.`;
+      chanceNote.textContent = `Ставка: ${fmtPrice(totalPrice)}${items.length > 1 ? ` (${items.length} предмета)` : ''}. Выбери шанс апгрейда.`;
       spinBtn.disabled = true;
       spinBtn.textContent = 'Выбери шанс и цель';
       return;
     }
     const eff = effectiveChance();
+    const summerInStake = items.some(it => it.isSummer);
+    const topUpBonus = creditTopUpChanceBonus();
     const buffText = habibiBuff !== 0
-      ? ` <span style="color:${habibiBuff > 0 ? 'var(--cyan)' : 'var(--red)'}">(благословение Хабиби: ${habibiBuff > 0 ? '+' : ''}${habibiBuff}%, итого ${eff}%)</span>`
+      ? ` <span style="color:${habibiBuff > 0 ? 'var(--cyan)' : 'var(--red)'}">(благословение Хабиби: ${habibiBuff > 0 ? '+' : ''}${habibiBuff}%)</span>`
       : '';
-    chanceNote.innerHTML = `${selectedChance}% шанс${buffText} → цель ${fmtPrice(currentTarget.price)} (в ${(currentTarget.price/stake.price).toFixed(2)}× дороже ставки).`;
+    const summerBonusText = summerInStake
+      ? ` <span style="color:var(--blue)">(летний бонус: +5%)</span>`
+      : '';
+    const topUpText = topUpBonus > 0
+      ? ` <span style="color:var(--orange)">(докинуто кредитов: +${topUpBonus}%)</span>`
+      : '';
+    const totalText = (habibiBuff !== 0 || summerInStake || topUpBonus > 0) ? ` → итого ${eff}%` : '';
+    chanceNote.innerHTML = `${selectedChance}% шанс${buffText}${summerBonusText}${topUpText}${totalText} → цель ${fmtPrice(currentTarget.price)} (в ${(currentTarget.price/totalPrice).toFixed(2)}× дороже ставки).`;
     spinBtn.disabled = false;
     spinBtn.textContent = 'Крутить колесо';
+  }
+
+  const topupSlider = document.getElementById('topupSlider');
+  const topupValueLabel = document.getElementById('topupValueLabel');
+  const topupBonusLabel = document.getElementById('topupBonusLabel');
+  const topupNote = document.getElementById('topupNote');
+
+  function renderTopupSlider(){
+    if(!topupSlider) return;
+    const hasStake = currentStakeItems().length > 0;
+    const cap = maxCreditTopUp();
+    if(!hasStake || cap <= 0){
+      topupSlider.disabled = true;
+      topupSlider.max = 0;
+      topupSlider.value = 0;
+      if(creditTopUp !== 0){ creditTopUp = 0; }
+      topupValueLabel.textContent = '0';
+      topupBonusLabel.textContent = '';
+      topupNote.textContent = hasStake
+        ? 'Недостаточно кредитов, чтобы что-то докинуть.'
+        : 'Повышает цену ставки (доступ к более дорогой цели) и немного увеличивает шанс выигрыша.';
+      return;
+    }
+    topupSlider.disabled = false;
+    topupSlider.max = cap;
+    if(creditTopUp > cap) creditTopUp = cap;
+    topupSlider.value = creditTopUp;
+    topupValueLabel.textContent = creditTopUp.toLocaleString('ru-RU');
+    const bonus = creditTopUpChanceBonus();
+    topupBonusLabel.textContent = bonus > 0 ? `(+${bonus}% к шансу)` : '';
+    topupNote.textContent = 'Повышает цену ставки (доступ к более дорогой цели) и немного увеличивает шанс выигрыша.';
+  }
+
+  if(topupSlider){
+    topupSlider.addEventListener('input', ()=>{
+      creditTopUp = parseInt(topupSlider.value, 10) || 0;
+      // Changing the top-up changes the effective stake price, so any
+      // previously chosen target/chance no longer matches — reset them,
+      // same as picking a different stake would.
+      selectedChance = null;
+      currentTarget = null;
+      renderAll();
+    });
   }
 
   function renderAll(){
@@ -2668,6 +3005,7 @@
     renderShopTab();
     renderSummerTab();
     renderTradeBoxes();
+    renderTopupSlider();
     renderChancePresets();
     paintWheel(effectiveChance());
     renderButtonAndNote();
@@ -2684,10 +3022,12 @@
 
   // ===== Target picker modal =====
   function openTargetModal(chancePct){
-    const stake = currentStake();
-    if(!stake) return;
-    const choices = generateTargetChoices(stake.price, chancePct);
-    modalSub.textContent = `Шанс ${chancePct}% — доступные предметы этой ценовой категории для ставки «${stake.name}».`;
+    const items = currentStakeItems();
+    if(items.length === 0) return;
+    const totalPrice = currentStakeTotalPrice();
+    const choices = generateTargetChoices(totalPrice, chancePct);
+    const stakeLabel = items.length === 1 ? `«${items[0].name}»` : `${items.length} предметов`;
+    modalSub.textContent = `Шанс ${chancePct}% — доступные предметы этой ценовой категории для ставки ${stakeLabel}.`;
     modalGrid.innerHTML = '';
     choices.forEach(item=>{
       const div = document.createElement('div');
@@ -2718,12 +3058,22 @@
     if(e.target === targetModal) closeTargetModal();
   });
 
+  // ===== Custom chance percentage (gear button) =====
+  const chanceGearBtn = document.getElementById('chanceGearBtn');
+  const customChancePanel = document.getElementById('customChancePanel');
+  const customChanceInput = document.getElementById('customChanceInput');
+  const customChanceApply = document.getElementById('customChanceApply');
+  const customChanceError = document.getElementById('customChanceError');
+
   chanceBtns.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       if(spinning) return;
-      const stake = currentStake();
-      if(!stake) return;
+      if(currentStakeItems().length === 0) return;
       const val = parseInt(btn.dataset.chance, 10);
+      if(customChancePanel){
+        customChancePanel.classList.remove('open');
+        chanceGearBtn.classList.remove('active');
+      }
       openTargetModal(val);
     });
   });
@@ -2732,17 +3082,51 @@
     openTargetModal(selectedChance);
   });
 
+  if(chanceGearBtn && customChancePanel){
+    chanceGearBtn.addEventListener('click', ()=>{
+      if(spinning) return;
+      customChancePanel.classList.toggle('open');
+      chanceGearBtn.classList.toggle('active', customChancePanel.classList.contains('open'));
+      if(customChancePanel.classList.contains('open')) customChanceInput.focus();
+    });
+  }
+
+  function applyCustomChance(){
+    if(spinning) return;
+    if(currentStakeItems().length === 0) return;
+    customChanceError.textContent = '';
+    const raw = parseInt(customChanceInput.value, 10);
+    if(isNaN(raw) || raw < 1 || raw > 95){
+      customChanceError.textContent = 'Введи число от 1 до 95.';
+      return;
+    }
+    openTargetModal(raw);
+    customChancePanel.classList.remove('open');
+    chanceGearBtn.classList.remove('active');
+    customChanceInput.value = '';
+  }
+
+  if(customChanceApply){
+    customChanceApply.addEventListener('click', applyCustomChance);
+  }
+  if(customChanceInput){
+    customChanceInput.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter') applyCustomChance();
+    });
+  }
+
   // ===== Spin =====
   function spin(){
     if(spinning) return;
-    const stake = currentStake();
-    if(!stake || !selectedChance || !currentTarget) return;
+    const items = currentStakeItems();
+    if(items.length === 0 || !selectedChance || !currentTarget) return;
 
     spinning = true;
     spinBtn.disabled = true;
     totalSpins++;
     trackQuestProgress('spin');
-    resultLine.textContent = `На кону: «${stake.name}» → «${currentTarget.name}». Крутим...`;
+    const stakeLabel = items.length === 1 ? `«${items[0].name}»` : `${items.length} предметов`;
+    resultLine.textContent = `На кону: ${stakeLabel} → «${currentTarget.name}». Крутим...`;
     resultLine.className = 'result-line';
 
     // Single source of truth: pick landing angle uniformly over the circle,
@@ -2769,25 +3153,36 @@
     // pre-spin state, letting the same stake be spun again for free. Now the
     // result is applied and persisted immediately; the animation just shows
     // what already happened.
-    const stakeIndexAtSpinTime = selectedStakeIndex;
+    const stakedIndicesAtSpinTime = [...selectedStakeIndices].sort((a,b) => a-b);
     const targetNameAtSpinTime = currentTarget.name;
+    const spentTopUp = creditTopUp; // spent either way — it's the cost of the boosted odds
+    credits -= spentTopUp;
     let consolationPending = false;
-    let wasBigLoss = false;
 
     if(willWin){
-      inventoryData[stakeIndexAtSpinTime] = { ...currentTarget, id: uid() };
+      // The whole stake becomes one target item, placed at the first staked
+      // slot; every other staked slot is removed (highest index first so
+      // splice indices stay valid as we go).
+      const firstIndex = stakedIndicesAtSpinTime[0];
+      for(let k = stakedIndicesAtSpinTime.length - 1; k >= 1; k--){
+        inventoryData.splice(stakedIndicesAtSpinTime[k], 1);
+      }
+      inventoryData[firstIndex] = { ...currentTarget, id: uid() };
       trackQuestProgress('win');
     } else {
-      wasBigLoss = ['rare','mythic','legendary'].includes(stake.rarity);
-      inventoryData.splice(stakeIndexAtSpinTime, 1);
-      selectedStakeIndex = inventoryData.length ? Math.min(stakeIndexAtSpinTime, inventoryData.length - 1) : -1;
-      // Consolation case eligibility is also decided now, not after the
-      // animation, so a refresh can't dodge (or duplicate) it either.
+      // Losing removes every staked item. Consolation eligibility triggers if
+      // ANY of the lost items was rare-or-better.
+      const wasBigLoss = items.some(it => ['rare','mythic','legendary'].includes(it.rarity));
+      for(let k = stakedIndicesAtSpinTime.length - 1; k >= 0; k--){
+        inventoryData.splice(stakedIndicesAtSpinTime[k], 1);
+      }
       consolationPending = wasBigLoss && Math.random() < 0.6;
     }
+    selectedStakeIndices = [];
     selectedChance = null;
     currentTarget = null;
     habibiBuff = 0;
+    creditTopUp = 0;
     saveAccountProgress(); // persist the real outcome before the animation even plays
 
     pointerGroup.style.transformOrigin = '135px 135px';
@@ -2801,15 +3196,18 @@
       playChime(willWin);
 
       if(willWin){
-        resultLine.textContent = `Апгрейд удался! «${stake.name}» стал «${targetNameAtSpinTime}».`;
+        resultLine.textContent = `Апгрейд удался! ${stakeLabel} превратились в «${targetNameAtSpinTime}».`;
         resultLine.className = 'result-line win';
         renderAll();
       } else {
-        resultLine.textContent = `Не повезло. «${stake.name}» потерян.`;
+        resultLine.textContent = `Не повезло. ${stakeLabel} потеряно.`;
         resultLine.className = 'result-line lose';
         if(consolationPending){
           renderAll();
-          openConsolationCase(stake.name);
+          // Consolation prize is based on the priciest lost item, matching
+          // the "half of what you lost" rule the player asked for.
+          const priciestLost = items.reduce((max, it) => it.price > max.price ? it : max, items[0]);
+          openConsolationCase(stakeLabel, priciestLost.price);
           return; // case flow calls renderAll() itself once it resolves
         }
       }
@@ -2833,7 +3231,7 @@
     </div>`;
   }
 
-  function openConsolationCase(lostName){
+  function openConsolationCase(lostName, lostPrice){
     caseLostName.textContent = lostName;
     caseResult.textContent = '';
     caseContinueBtn.style.display = 'none';
@@ -2841,9 +3239,16 @@
     caseModal.classList.add('open');
     lockBodyScroll();
 
-    // The actual prize, decided up front — common items are far more likely
-    // than the rare uncommon "big win" inside the consolation case itself.
-    const prize = makeItem(Math.random() < 0.7 ? 'common' : 'uncommon');
+    // Guaranteed prize worth roughly half of what was lost (small random
+    // spread so it doesn't feel like a fixed formula, but honestly centered
+    // on 50%) — no more mostly-common random drops on a rare/mythic loss.
+    const targetPrice = Math.max(20, Math.round((lostPrice || 100) * (0.45 + Math.random()*0.1)));
+    let bestTier = RARITIES[0];
+    RARITIES.forEach(r => {
+      if(Math.abs(r.base - targetPrice) < Math.abs(bestTier.base - targetPrice)) bestTier = r;
+    });
+    const prize = makeItem(bestTier.key);
+    prize.price = targetPrice;
 
     const totalCards = 28;
     const winIndex = 22;
@@ -2929,6 +3334,17 @@
     profileStatItems.textContent = inventoryData.length;
     profileStatCredits.textContent = credits.toLocaleString('ru-RU');
     profileStatSpins.textContent = totalSpins;
+
+    const badgeEl = document.getElementById('profileCollectorBadge');
+    if(badgeEl){
+      const allShapes = SUMMER_ITEMS.map(i => i.shape);
+      const collectedCount = allShapes.filter(s => summerCollected.includes(s)).length;
+      const complete = collectedCount === allShapes.length;
+      badgeEl.className = 'profile-collector-badge' + (complete ? ' complete' : '');
+      badgeEl.textContent = complete
+        ? `🏆 Летний коллекционер — все ${allShapes.length} скинов собраны${summerSecretClaimed ? ' + секретный' : ''}`
+        : `🍉 Летний коллекционер: ${collectedCount} / ${allShapes.length}`;
+    }
   }
 
   function prayToHabibi(){
@@ -3115,16 +3531,47 @@
     if(!ok){
       loginError.textContent = 'Не получилось связаться с базой данных (Supabase). Проверь интернет-соединение и попробуй обновить страницу.';
       registerError.textContent = loginError.textContent;
-      return;
     }
-    // Seed a ready-to-use beta account so the game is playable immediately —
-    // login: beta / password: beta123
-    getAccount('beta').then(existing => {
-      if(!existing){
-        createAccount('beta', 'beta123').catch(()=>{});
-      }
-    }).catch(()=>{});
   });
+
+  // ===== Auth screen floating background =====
+  // Slowly drifting silhouettes of real weapons/summer items, reusing the
+  // same icon renderers as the rest of the game. Purely decorative — kept
+  // faint and slow so it doesn't compete with the login form.
+  (function populateAuthFloatBg(){
+    const bg = document.getElementById('authFloatBg');
+    if(!bg) return;
+    const pieces = [];
+    // Mix of regular weapon silhouettes and summer items for variety
+    ['rifle','knife','pistol','sniper','smg'].forEach(shape=>{
+      pieces.push(weaponSVG(shape, rand(['common','uncommon','rare','mythic','legendary'])));
+    });
+    SUMMER_ITEMS.forEach(item => pieces.push(summerIconSVG(item)));
+
+    const count = 10;
+    for(let i=0;i<count;i++){
+      const svgHtml = pieces[Math.floor(Math.random()*pieces.length)];
+      const el = document.createElement('div');
+      el.className = 'auth-float-item';
+      el.innerHTML = svgHtml;
+      const size = 34 + Math.random()*46;
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.left = Math.random()*94 + '%';
+      el.style.top = Math.random()*94 + '%';
+      const floatX = (Math.random()*60 - 30) + 'px';
+      const floatY = (Math.random()*60 - 30) + 'px';
+      const rotStart = (Math.random()*20 - 10) + 'deg';
+      const rotEnd = (Math.random()*20 - 10) + 'deg';
+      el.style.setProperty('--float-x', floatX);
+      el.style.setProperty('--float-y', floatY);
+      el.style.setProperty('--float-rot-start', rotStart);
+      el.style.setProperty('--float-rot-end', rotEnd);
+      el.style.animationDuration = (14 + Math.random()*14) + 's';
+      el.style.animationDelay = (Math.random()*-20) + 's';
+      bg.appendChild(el);
+    }
+  })();
 
   // Lightweight tick: only refreshes the pirate countdown text, not the whole
   // grid, so it doesn't disturb button states or in-progress interactions.
