@@ -1145,7 +1145,7 @@
           <circle cx="60" cy="60" r="7" fill="var(--cyan)"/>
         </svg>
       </div>
-      <p class="prayer-desc">Хабиби услышит тебя за <b id="prayerCostLabel">5 000 кредитов</b>. Взамен он даст случайное благословение — прибавку (а иногда и убавку) к шансу апгрейда на твою следующую прокрутку колеса. Никто не знает заранее, насколько он щедр сегодня.</p>
+      <p class="prayer-desc">Хабиби услышит тебя за <b id="prayerCostLabel">5 000 кредитов</b> — чем больше у тебя денег, тем дороже он стоит (5% от баланса). Взамен даст благословение от −5% до +15% к шансу апгрейда. Очень редко (0.1%) может явиться 🦉 сова на скакалке (−99%) или 🦥 ленивец с миской (+99%).</p>
       <button class="prayer-btn" id="prayerBtn">Помолиться (−5 000 кр.)</button>
       <div class="prayer-result" id="prayerResult"></div>
       <div class="prayer-buff-note" id="prayerBuffNote"></div>
@@ -1384,6 +1384,18 @@
 
       <div class="wn-entry">
         <div class="wn-date">Последнее обновление</div>
+        <div class="wn-title">Кейсы и дебаф Хабиби</div>
+        <ul class="wn-points">
+          <li>📦 Новая вкладка «Кейсы» — три тематических кейса: Котокейс (дёшево, в основном обычное), VIP-кейс (дорого, много редкого и мифического) и Жуткий кейс (риск: либо почти ничего, либо джекпот).</li>
+          <li>☪ Молитва Хабиби подешевела в возможностях, но подорожала на деле — теперь цена растёт вместе с твоим балансом (5% от кредитов, минимум 5 000).</li>
+          <li>☪ Диапазон благословения сужен до −5% ... +15% — никакого +30% как раньше.</li>
+          <li>🦉 Очень редко (0.1%) является сова на скакалке — почти гарантированный провал (−99%).</li>
+          <li>🦥 Так же редко (0.1%) может явиться ленивец с миской — почти гарантированный успех (+99%).</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Ранее</div>
         <div class="wn-title">Мульти-ставка, свой процент и честный утешительный кейс</div>
         <ul class="wn-points">
           <li>🎯 Мульти-стейк — теперь можно поставить сразу несколько предметов на один прокрут, их цена складывается в общую ставку.</li>
@@ -3580,18 +3592,23 @@
   }
 
   // ===== Habibi's Prayer =====
-  const PRAYER_COST = 5000;
+  const PRAYER_BASE_COST = 5000;
+  const PRAYER_COST_RATE = 0.05; // price scales up to 5% of current balance, whichever is higher than the base
+  function currentPrayerCost(){
+    return Math.max(PRAYER_BASE_COST, Math.round(credits * PRAYER_COST_RATE));
+  }
   const prayerBtn = document.getElementById('prayerBtn');
   const prayerIcon = document.getElementById('prayerIcon');
   const prayerResult = document.getElementById('prayerResult');
   const prayerBuffNote = document.getElementById('prayerBuffNote');
   const prayerCostLabel = document.getElementById('prayerCostLabel');
-  if(prayerCostLabel) prayerCostLabel.textContent = PRAYER_COST.toLocaleString('ru-RU') + ' кредитов';
 
   function renderPrayerTab(){
     if(!prayerBtn) return;
-    prayerBtn.disabled = praying || credits < PRAYER_COST;
-    prayerBtn.textContent = praying ? 'Хабиби внимает...' : `Помолиться (−${PRAYER_COST.toLocaleString('ru-RU')} кр.)`;
+    const cost = currentPrayerCost();
+    if(prayerCostLabel) prayerCostLabel.textContent = cost.toLocaleString('ru-RU') + ' кредитов';
+    prayerBtn.disabled = praying || credits < cost;
+    prayerBtn.textContent = praying ? 'Хабиби внимает...' : `Помолиться (−${cost.toLocaleString('ru-RU')} кр.)`;
     if(habibiBuff !== 0 && !praying){
       prayerBuffNote.textContent = `Активное благословение: ${habibiBuff > 0 ? '+' : ''}${habibiBuff}% к шансу на следующую прокрутку. Сгорит после первого использования колеса.`;
     } else if(!praying){
@@ -3629,8 +3646,9 @@
   }
 
   function prayToHabibi(){
-    if(praying || credits < PRAYER_COST) return;
-    credits -= PRAYER_COST;
+    const cost = currentPrayerCost();
+    if(praying || credits < cost) return;
+    credits -= cost;
     praying = true;
     trackQuestProgress('pray');
     prayerIcon.classList.add('praying');
@@ -3644,23 +3662,42 @@
       praying = false;
       prayerIcon.classList.remove('praying');
 
-      // Random blessing: mostly positive, occasionally punishing — Habibi is fair but moody.
-      // Range -10% to +30%, weighted toward the positive side.
-      const roll = Math.random();
-      let buff;
-      if(roll < 0.12){
-        buff = -Math.round(3 + Math.random()*7);      // 12% chance: -3 to -10 (Habibi is displeased)
-      } else if(roll < 0.35){
-        buff = Math.round(1 + Math.random()*7);        // 23% chance: small +1 to +8
-      } else if(roll < 0.75){
-        buff = Math.round(8 + Math.random()*10);       // 40% chance: solid +8 to +18
+      // Habibi got stricter: the everyday outcome is a much narrower band
+      // (-5% to +15%), and the price itself now scales with the player's own
+      // balance — the richer you are, the more it costs to ask for luck.
+      // On top of that, two ultra-rare special omens can appear (0.1% each),
+      // completely overriding the normal roll:
+      //   🦉 Owl on a jump rope — near-guaranteed failure (-99%)
+      //   🦥 Sloth with a bowl — near-guaranteed success (+99%)
+      const specialRoll = Math.random();
+      let buff, specialLabel = null;
+
+      if(specialRoll < 0.001){
+        buff = -99;
+        specialLabel = 'owl';
+      } else if(specialRoll < 0.002){
+        buff = 99;
+        specialLabel = 'sloth';
       } else {
-        buff = Math.round(18 + Math.random()*12);      // 25% chance: generous +18 to +30
+        // Normal band: -5% to +15%, still weighted to feel a bit more often
+        // positive than negative without being generous.
+        const roll = Math.random();
+        if(roll < 0.25){
+          buff = -Math.round(1 + Math.random()*4);   // 25% chance: -1 to -5
+        } else {
+          buff = Math.round(1 + Math.random()*14);   // 75% chance: +1 to +15
+        }
       }
 
       habibiBuff = buff;
 
-      if(buff > 0){
+      if(specialLabel === 'owl'){
+        prayerResult.textContent = `🦉 Сова на скакалке! Хабиби в ужасе — ${buff}% к шансу апгрейда...`;
+        prayerResult.className = 'prayer-result debuff';
+      } else if(specialLabel === 'sloth'){
+        prayerResult.textContent = `🦥 Ленивец с миской! Хабиби в полном довольстве — +${buff}% к шансу апгрейда!`;
+        prayerResult.className = 'prayer-result buff';
+      } else if(buff > 0){
         prayerResult.textContent = `Хабиби благословляет: +${buff}% к шансу апгрейда!`;
         prayerResult.className = 'prayer-result buff';
       } else {
