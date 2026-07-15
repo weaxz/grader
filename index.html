@@ -1111,6 +1111,97 @@
         <button class="case-open-btn" data-case-open="spooky" type="button">Открыть</button>
       </div>
 
+      <div class="case-tile" data-case="soldier">
+        <div class="case-art">
+          <svg viewBox="0 0 200 160">
+            <defs>
+              <linearGradient id="soldierCaseBody" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5a6650"/>
+                <stop offset="100%" stop-color="#3a4232"/>
+              </linearGradient>
+              <linearGradient id="soldierCaseLid" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#6f7d61"/>
+                <stop offset="100%" stop-color="#5a6650"/>
+              </linearGradient>
+            </defs>
+            <rect x="20" y="80" width="160" height="60" rx="8" fill="url(#soldierCaseBody)"/>
+            <path d="M14 78 L100 46 L186 78 L186 88 L100 58 L14 88 Z" fill="url(#soldierCaseLid)"/>
+            <rect x="24" y="84" width="152" height="4" fill="#2a2f24" opacity="0.5"/>
+            <!-- shield with star -->
+            <g transform="translate(100 106)">
+              <path d="M0 -26 L20 -18 L20 4 C20 18 10 26 0 30 C-10 26 -20 18 -20 4 L-20 -18 Z" fill="#c2a892"/>
+              <path d="M0 -26 L20 -18 L20 4 C20 18 10 26 0 30 Z" fill="#a8916f" opacity="0.6"/>
+              <path d="M0 -12 L4 -3 L14 -3 L6 3 L9 12 L0 6 L-9 12 L-6 3 L-14 -3 L-4 -3 Z" fill="#3a4232"/>
+            </g>
+          </svg>
+        </div>
+        <div class="case-name">Кейс Солдата</div>
+        <div class="case-sub">Сбалансированный — стабильный шанс на среднюю редкость</div>
+        <div class="case-price">900 кр.</div>
+        <button class="case-open-btn" data-case-open="soldier" type="button">Открыть</button>
+      </div>
+
+      <div class="case-tile" data-case="patriot">
+        <div class="case-art">
+          <svg viewBox="0 0 200 160">
+            <defs>
+              <linearGradient id="patriotCaseBody" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1e3a6b"/>
+                <stop offset="100%" stop-color="#122447"/>
+              </linearGradient>
+            </defs>
+            <rect x="20" y="80" width="160" height="60" rx="8" fill="url(#patriotCaseBody)"/>
+            <rect x="20" y="80" width="160" height="10" fill="#c9302f"/>
+            <rect x="20" y="130" width="160" height="10" fill="#c9302f"/>
+            <path d="M14 78 L100 46 L186 78 L186 88 L100 58 L14 88 Z" fill="#0c1830"/>
+            <rect x="24" y="60" width="6" height="24" fill="#e8e8e8"/>
+            <rect x="170" y="60" width="6" height="24" fill="#e8e8e8"/>
+            <!-- abstract eagle/wings silhouette -->
+            <g transform="translate(100 104)">
+              <path d="M0 -6 C-14 -18 -30 -14 -34 -2 C-24 -4 -14 0 -6 6 Z" fill="#e8e8e8"/>
+              <path d="M0 -6 C14 -18 30 -14 34 -2 C24 -4 14 0 6 6 Z" fill="#e8e8e8"/>
+              <circle cx="0" cy="4" r="9" fill="#e8e8e8"/>
+              <circle cx="0" cy="2" r="2.5" fill="#1e3a6b"/>
+            </g>
+          </svg>
+        </div>
+        <div class="case-name">Кейс Патриота</div>
+        <div class="case-sub">Дорогой лидер — крупный упор на мифическое и легендарное</div>
+        <div class="case-price">4 200 кр.</div>
+        <button class="case-open-btn" data-case-open="patriot" type="button">Открыть</button>
+      </div>
+
+      <div class="case-tile" data-case="speed">
+        <div class="case-art">
+          <svg viewBox="0 0 200 160">
+            <defs>
+              <linearGradient id="speedCaseBody" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#4a4f5a"/>
+                <stop offset="100%" stop-color="#2a2e36"/>
+              </linearGradient>
+              <linearGradient id="speedBolt" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fff08a"/>
+                <stop offset="100%" stop-color="#ffd23f"/>
+              </linearGradient>
+            </defs>
+            <rect x="20" y="80" width="160" height="60" rx="8" fill="url(#speedCaseBody)"/>
+            <path d="M14 78 L100 46 L186 78 L186 88 L100 58 L14 88 Z" fill="#1c1f26"/>
+            <!-- speed lines -->
+            <g stroke="#ffd23f" stroke-width="3" stroke-linecap="round" opacity="0.5">
+              <line x1="26" y1="96" x2="52" y2="96"/>
+              <line x1="26" y1="108" x2="46" y2="108"/>
+              <line x1="26" y1="120" x2="58" y2="120"/>
+            </g>
+            <!-- bolt -->
+            <path d="M108 74 L88 108 L102 108 L94 134 L120 100 L104 100 Z" fill="url(#speedBolt)"/>
+          </svg>
+        </div>
+        <div class="case-name">Кейс Скорости</div>
+        <div class="case-sub">Быстрый и дешёвый — крутить часто, редкое реже</div>
+        <div class="case-price">650 кр.</div>
+        <button class="case-open-btn" data-case-open="speed" type="button">Открыть</button>
+      </div>
+
     </div>
   </div>
 
@@ -1384,6 +1475,17 @@
 
       <div class="wn-entry">
         <div class="wn-date">Последнее обновление</div>
+        <div class="wn-title">Три новых кейса и фикс лимита баланса</div>
+        <ul class="wn-points">
+          <li>🪖 Кейс Солдата — сбалансированный, стабильный шанс на среднюю редкость.</li>
+          <li>🦅 Кейс Патриота — самый дорогой из всех, крупный упор на мифическое и легендарное.</li>
+          <li>⚡ Кейс Скорости — дешёвый и быстрый, для частого открытия.</li>
+          <li>🛠️ Исправлен потолок баланса кредитов и ракушек (был ограничен ~2.1 млрд) — теперь можно копить намного больше без потери прогресса.</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Ранее</div>
         <div class="wn-title">Кейсы и дебаф Хабиби</div>
         <ul class="wn-points">
           <li>📦 Новая вкладка «Кейсы» — три тематических кейса: Котокейс (дёшево, в основном обычное), VIP-кейс (дорого, много редкого и мифического) и Жуткий кейс (риск: либо почти ничего, либо джекпот).</li>
@@ -3490,6 +3592,18 @@
     spooky: {
       name: 'Жуткий кейс', price: 1100,
       weights: { common: 60, uncommon: 8, rare: 8, mythic: 9, legendary: 15 },
+    },
+    soldier: {
+      name: 'Кейс Солдата', price: 900,
+      weights: { common: 35, uncommon: 35, rare: 22, mythic: 6.5, legendary: 1.5 },
+    },
+    patriot: {
+      name: 'Кейс Патриота', price: 4200,
+      weights: { common: 4, uncommon: 14, rare: 30, mythic: 34, legendary: 18 },
+    },
+    speed: {
+      name: 'Кейс Скорости', price: 650,
+      weights: { common: 45, uncommon: 33, rare: 16, mythic: 5, legendary: 1 },
     },
   };
 
