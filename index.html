@@ -27,11 +27,6 @@
     --rarity-rare: #ff8c3a;
     --rarity-mythic: #ff5c8a;
     --rarity-legendary: #ffd23f;
-    
-    /* EVENT COLORS */
-    --mutated-glow: 0 0 15px 5px rgba(74, 222, 128, 0.8);
-    --black-friday-bg: #3d0d0d;
-    --black-friday-text: #ffd700;
   }
 
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
@@ -189,18 +184,6 @@
   .item-card .buy-btn:hover{ border-color:var(--cyan); }
   .item-card .buy-btn:disabled{ opacity:.4; cursor:not-allowed; }
 
-  /* MUTATED ITEM OVERRIDE */
-  .item-card.mutated {
-    border-color: var(--green);
-    box-shadow: var(--mutated-glow);
-    animation: mutationPulse 2s infinite ease-in-out;
-  }
-  @keyframes mutationPulse {
-    0%, 100% { box-shadow: var(--mutated-glow); }
-    50% { box-shadow: 0 0 25px 8px rgba(74, 222, 128, 0.9); }
-  }
-  .item-card.mutated .tier { color: var(--green) !important; }
-
   .empty-note{ color:var(--muted); font-size:13px; grid-column:1/-1; padding:8px 2px; }
 
   /* ===== UPGRADE MACHINE ===== */
@@ -235,7 +218,6 @@
   .controls-col .chance-presets,
   .controls-col .chance-note,
   .controls-col .spin-btn,
-  .controls-col .mystery-btn,
   .controls-col .result-line{ max-width:460px; align-self:center; width:100%; }
 
   .trade-row{ display:flex; align-items:center; gap:10px; }
@@ -289,42 +271,15 @@
   .topup-slider:disabled{ opacity:.4; cursor:not-allowed; }
   .topup-note{ font-size:10.5px; color:var(--muted); line-height:1.4; }
 
-  .chance-presets{ display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .chance-presets{ display:flex; gap:8px; }
   .chance-btn{
     flex:1; font-family:'Chakra Petch', sans-serif; font-size:13.5px; font-weight:700;
     background:var(--panel-2); border:1px solid var(--line); color:var(--text);
     border-radius:9px; padding:10px 0; cursor:pointer; transition:border-color .15s, background .15s;
-    min-width: 50px;
   }
   .chance-btn:hover{ border-color:var(--cyan); }
   .chance-btn.active{ border-color:var(--cyan); background:rgba(94,234,212,.12); color:var(--cyan); }
   .chance-btn:disabled{ opacity:.4; cursor:not-allowed; }
-  .chance-edit-btn{
-    flex:0 0 auto; width:38px; font-size:15px;
-    background:var(--panel-2); border:1px solid var(--line); color:var(--text);
-    border-radius:9px; cursor:pointer; transition:border-color .15s, background .15s; display:flex; justify-content:center; align-items:center; height: 42px;
-  }
-  .chance-edit-btn:hover{ border-color:var(--cyan); }
-
-  .chance-edit-panel{
-    display:none; flex-direction:column; gap:8px;
-    background:var(--panel-2); border:1px solid var(--line); border-radius:10px; padding:12px 14px; width:100%; margin-top:5px;
-  }
-  .chance-edit-panel.open{ display:flex; }
-  .chance-edit-row{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .chance-edit-input{
-    font-family:'Inter', sans-serif; background:var(--panel); border:1px solid var(--line);
-    color:var(--text); border-radius:8px; padding:9px 12px; font-size:14px; outline:none;
-    transition:border-color .15s; width:100%;
-  }
-  .chance-edit-input:focus{ border-color:var(--cyan); }
-  .chance-edit-apply{
-    font-family:'Chakra Petch', sans-serif; font-size:12.5px; font-weight:700;
-    background:var(--grad-blue); color:#1a0f05; border:none; border-radius:8px;
-    padding:9px 14px; cursor:pointer; white-space:nowrap; transition:filter .15s; margin-top:5px;
-  }
-  .chance-edit-apply:hover{ filter:brightness(1.1); }
-  .chance-edit-error{ font-size:11px; color:var(--red); min-height:14px; }
 
   .chance-note{ font-size:11px; color:var(--muted); }
 
@@ -337,22 +292,12 @@
   .spin-btn:active{ transform:translateY(0); }
   .spin-btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
 
-  .mystery-btn{
-    font-family:'Chakra Petch', sans-serif; background:var(--grad-blue); color:#0a0b0e;
-    border:none; border-radius:10px; padding:15px 20px; font-size:15px; font-weight:700;
-    letter-spacing:.03em; cursor:pointer; transition:transform .15s ease, filter .15s ease; width:100%;
-  }
-  .mystery-btn:hover{ filter:brightness(1.08); transform:translateY(-1px); }
-  .mystery-btn:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
-
   .result-line{
     font-size:12.5px; color:var(--muted); min-height:32px; font-family:'Chakra Petch', sans-serif;
     letter-spacing:.01em; line-height:1.4;
   }
   .result-line.win{ color:var(--cyan); }
   .result-line.lose{ color:var(--red); }
-  .result-line.gold{ color:var(--orange); text-shadow: 0 0 10px rgba(255, 176, 32, 0.5); }
-  .result-line.mystery{ color:var(--blue); }
 
   @media (max-width:600px){
     .wrap{ padding:0 16px; }
@@ -383,7 +328,7 @@
     .chance-presets{ gap:6px; }
     .chance-btn{ padding:13px 0; font-size:13px; min-height:44px; }
 
-    .spin-btn, .mystery-btn, .prayer-btn, .auth-submit, .profile-logout-btn, .case-continue-btn{
+    .spin-btn, .prayer-btn, .auth-submit, .profile-logout-btn, .case-continue-btn{
       min-height:48px;
     }
 
@@ -977,25 +922,11 @@
             <button class="chance-btn" data-chance="30">30%</button>
             <button class="chance-btn" data-chance="50">50%</button>
             <button class="chance-btn" data-chance="75">75%</button>
-            <button class="chance-edit-btn" id="chanceEditBtn" type="button" title="Настроить проценты">🛠️</button>
-          </div>
-
-          <div class="chance-edit-panel" id="chanceEditPanel">
-            <label class="topup-label">Изменить проценты на кнопках (4 значения)</label>
-            <div class="chance-edit-row">
-              <input type="number" id="chanceEditInput1" min="1" max="99" step="1" placeholder="напр. 10" class="chance-edit-input">
-              <input type="number" id="chanceEditInput2" min="1" max="99" step="1" placeholder="напр. 20" class="chance-edit-input">
-              <input type="number" id="chanceEditInput3" min="1" max="99" step="1" placeholder="напр. 40" class="chance-edit-input">
-              <input type="number" id="chanceEditInput4" min="1" max="99" step="1" placeholder="напр. 95" class="chance-edit-input">
-            </div>
-            <button class="chance-edit-apply" id="chanceEditApply" type="button">Сохранить проценты</button>
-            <div class="chance-edit-error" id="chanceEditError"></div>
           </div>
 
           <div class="chance-note" id="chanceNote">Выбери предмет для ставки, затем шанс.</div>
 
-          <button class="spin-btn" id="spinBtn" disabled>Крутить колесо</button>
-          <button class="mystery-btn" id="mysteryBtn" disabled>🕵️ Мистери Мод (без колеса)</button>
+          <button class="spin-btn" id="spinBtn" disabled>Выбери предмет и шанс</button>
 
           <div class="result-line" id="resultLine">После выбора шанса откроется список предметов этой ценовой категории — выбери, во что хочешь апгрейднуться.</div>
         </div>
@@ -1421,16 +1352,6 @@
 
       <div class="wn-entry">
         <div class="wn-date">Последнее обновление</div>
-        <div class="wn-title">Кастомные проценты, Золотой Апгрейд и Мистери Мод!</div>
-        <ul class="wn-points">
-          <li>⚙️ Теперь ты можешь менять 4 кнопки процентов на любые другие (например, 10, 20, 40, 95).</li>
-          <li>✨ **Золотой апгрейд** — перед прокруткой случайно активируется (шанс 1%-30%). Если выигрываешь, получаешь множитель ×1.2, ×2 или ×4 к цене!</li>
-          <li>🕵️ **Мистери Мод** — ставь скин, жми кнопку, и скин меняется без колеса. Множители: ×0.1, ×0.5, ×1.5, ×2.5, ×5!</li>
-        </ul>
-      </div>
-
-      <div class="wn-entry">
-        <div class="wn-date">Ранее</div>
         <div class="wn-title">Пират убран</div>
         <ul class="wn-points">
           <li>⚓ Вкладка «Пират» удалена — почти никто ей не пользовался.</li>
@@ -1445,6 +1366,74 @@
           <li>🦅 Кейс Патриота — самый дорогой из всех, крупный упор на мифическое и легендарное.</li>
           <li>⚡ Кейс Скорости — дешёвый и быстрый, для частого открытия.</li>
           <li>🛠️ Исправлен потолок баланса кредитов и ракушек (был ограничен ~2.1 млрд) — теперь можно копить намного больше без потери прогресса.</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Ранее</div>
+        <div class="wn-title">Кейсы и дебаф Хабиби</div>
+        <ul class="wn-points">
+          <li>📦 Новая вкладка «Кейсы» — три тематических кейса: Котокейс (дёшево, в основном обычное), VIP-кейс (дорого, много редкого и мифического) и Жуткий кейс (риск: либо почти ничего, либо джекпот).</li>
+          <li>☪ Молитва Хабиби подешевела в возможностях, но подорожала на деле — теперь цена растёт вместе с твоим балансом (5% от кредитов, минимум 5 000).</li>
+          <li>☪ Диапазон благословения сужен до −5% ... +15% — никакого +30% как раньше.</li>
+          <li>🦉 Очень редко (0.1%) является сова на скакалке — почти гарантированный провал (−99%).</li>
+          <li>🦥 Так же редко (0.1%) может явиться ленивец с миской — почти гарантированный успех (+99%).</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Ранее</div>
+        <div class="wn-title">Мульти-ставка, свой процент и честный утешительный кейс</div>
+        <ul class="wn-points">
+          <li>🎯 Мульти-стейк — теперь можно поставить сразу несколько предметов на один прокрут, их цена складывается в общую ставку.</li>
+          <li>💰 Докидка кредитов — ползунок, повышающий цену ставки и дающий небольшой бонус к шансу выигрыша (нельзя докинуть весь баланс).</li>
+          <li>⚙️ Свой процент шанса — рядом с кнопками 15/30/50/75% появилась шестерёнка, через которую можно вписать любое число от 1 до 95%.</li>
+          <li>🎁 Утешительный кейс стал честнее — теперь гарантированно даёт предмет на половину стоимости проигранного скина, а не редкий мелкий дроп.</li>
+          <li>📐 Порядок блоков на вкладке «Апгрейд» изменён: сначала колесо, потом выбор предметов, потом настройка ставки.</li>
+          <li>🧹 Убран тестовый аккаунт beta из экрана входа.</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Ранее</div>
+        <div class="wn-title">Квесты, торговая лавка и важные фиксы</div>
+        <ul class="wn-points">
+          <li>📋 Ежедневные квесты — теперь очки баттлпасса даёт только выполнение сезонных заданий, а не прокрутки сами по себе. Задания обновляются каждый день.</li>
+          <li>🎖️ Баттлпасс увеличен до 40 уровней.</li>
+          <li>⚓ У пирата теперь настоящая торговая лавка с прилавком и вывеской, а ассортимент вырос с 4 до 6 предложений.</li>
+          <li>🛠️ Исправлен баг с дюпом в трейде — повторное нажатие «Принять» больше не даёт получить предмет дважды.</li>
+          <li>🛠️ Исправлен баг с обновлением страницы во время прокрутки колеса — результат теперь фиксируется сразу, а не после анимации.</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Ранее</div>
+        <div class="wn-title">Пират, трейд и баттлпасс</div>
+        <ul class="wn-points">
+          <li>⚓ Пират — ежедневная распродажа оружия дешевле обычного магазина. Некоторые предложения — обман: под видом хорошей пушки может скрываться дешёвка.</li>
+          <li>🤝 Трейд между игроками — отправляй предметы друзьям с подтверждением, они сами решают принять или отклонить.</li>
+          <li>🎖️ Баттлпасс — награды за прогресс: кредиты, ракушки и летние скины.</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Летнее обновление</div>
+        <div class="wn-title">Новая тема и летняя витрина</div>
+        <ul class="wn-points">
+          <li>🍉 Летняя витрина с уникальными скинами — арбуз, пальмы, закатный неон.</li>
+          <li>🐚 Ракушки — отдельная валюта для летних покупок, обменивается из кредитов.</li>
+          <li>Полная перекраска темы на летние тона.</li>
+          <li>🖱️ Кликер — простой способ заработать кредиты без риска.</li>
+        </ul>
+      </div>
+
+      <div class="wn-entry">
+        <div class="wn-date">Раньше</div>
+        <div class="wn-title">Аккаунты и молитва Хабиби</div>
+        <ul class="wn-points">
+          <li>Вход и регистрация — прогресс сохраняется в общей базе данных.</li>
+          <li>☪ Молитва Хабиби — испытай удачу за кредиты, получи случайный бафф к шансу апгрейда.</li>
+          <li>Утешительный кейс — при проигрыше дорогого предмета есть шанс получить что-то взамен.</li>
         </ul>
       </div>
 
@@ -2094,7 +2083,6 @@
   const stakeBox = document.getElementById('stakeBox');
   const targetBox = document.getElementById('targetBox');
   const spinBtn = document.getElementById('spinBtn');
-  const mysteryBtn = document.getElementById('mysteryBtn');
   const chanceNote = document.getElementById('chanceNote');
   const wheelChanceLabel = document.getElementById('wheelChanceLabel');
   const resultLine = document.getElementById('resultLine');
@@ -2867,66 +2855,6 @@
       </div>` : `<div class="meta"><div class="label">Цель</div><div class="name">Выбери шанс</div></div>`;
   }
 
-  // ===== CUSTOM CHANCE PERCENTAGE LOGIC =====
-  let customChanceValues = [15, 30, 50, 75];
-  const chanceEditBtn = document.getElementById('chanceEditBtn');
-  const chanceEditPanel = document.getElementById('chanceEditPanel');
-  const chanceEditInputs = [
-    document.getElementById('chanceEditInput1'),
-    document.getElementById('chanceEditInput2'),
-    document.getElementById('chanceEditInput3'),
-    document.getElementById('chanceEditInput4')
-  ];
-  const chanceEditApply = document.getElementById('chanceEditApply');
-  const chanceEditError = document.getElementById('chanceEditError');
-
-  function updateChanceButtonsFromArray() {
-    chanceBtns.forEach((btn, index) => {
-      if(index < customChanceValues.length) {
-        btn.textContent = customChanceValues[index] + '%';
-        btn.dataset.chance = customChanceValues[index];
-      }
-    });
-  }
-
-  if(chanceEditBtn && chanceEditPanel) {
-    chanceEditBtn.addEventListener('click', () => {
-      chanceEditPanel.classList.toggle('open');
-      if(chanceEditPanel.classList.contains('open')) {
-        // Pre-fill inputs with current values
-        chanceEditInputs.forEach((input, i) => {
-          if(input) input.value = customChanceValues[i] || '';
-        });
-      }
-    });
-  }
-
-  if(chanceEditApply) {
-    chanceEditApply.addEventListener('click', () => {
-      const newVals = [];
-      let valid = true;
-      chanceEditInputs.forEach(input => {
-        const val = parseInt(input.value, 10);
-        if(!isNaN(val) && val >= 1 && val <= 99) {
-          newVals.push(val);
-        } else {
-          valid = false;
-        }
-      });
-
-      if(!valid || newVals.length !== 4) {
-        chanceEditError.textContent = 'Введите 4 числа от 1 до 99.';
-        return;
-      }
-      chanceEditError.textContent = '';
-      customChanceValues = newVals;
-      updateChanceButtonsFromArray();
-      chanceEditPanel.classList.remove('open');
-      // Re-render so active state clears up
-      renderAll();
-    });
-  }
-
   function renderChancePresets(){
     chanceBtns.forEach(btn=>{
       const val = parseInt(btn.dataset.chance, 10);
@@ -2962,9 +2890,7 @@
     if(items.length === 0){
       chanceNote.textContent = 'Выбери предмет(ы) для ставки, затем шанс.';
       spinBtn.disabled = true;
-      spinBtn.textContent = 'Крутить колесо';
-      mysteryBtn.disabled = true;
-      mysteryBtn.textContent = '🕵️ Мистери Мод (без колеса)';
+      spinBtn.textContent = 'Выбери предмет и шанс';
       return;
     }
     const totalPrice = currentStakeTotalPrice();
@@ -2972,8 +2898,6 @@
       chanceNote.textContent = `Ставка: ${fmtPrice(totalPrice)}${items.length > 1 ? ` (${items.length} предмета)` : ''}. Выбери шанс апгрейда.`;
       spinBtn.disabled = true;
       spinBtn.textContent = 'Выбери шанс и цель';
-      mysteryBtn.disabled = true;
-      mysteryBtn.textContent = '🕵️ Мистери Мод (без колеса)';
       return;
     }
     const eff = effectiveChance();
@@ -2992,8 +2916,6 @@
     chanceNote.innerHTML = `${selectedChance}% шанс${buffText}${summerBonusText}${topUpText}${totalText} → цель ${fmtPrice(currentTarget.price)} (в ${(currentTarget.price/totalPrice).toFixed(2)}× дороже ставки).`;
     spinBtn.disabled = false;
     spinBtn.textContent = 'Крутить колесо';
-    mysteryBtn.disabled = false;
-    mysteryBtn.textContent = '🕵️ Мистери Мод (без колеса)';
   }
 
   const topupSlider = document.getElementById('topupSlider');
@@ -3114,28 +3036,11 @@
 
     spinning = true;
     spinBtn.disabled = true;
-    mysteryBtn.disabled = true;
     totalSpins++;
     trackQuestProgress('spin');
     const stakeLabel = items.length === 1 ? `«${items[0].name}»` : `${items.length} предметов`;
     resultLine.textContent = `На кону: ${stakeLabel} → «${currentTarget.name}». Крутим...`;
     resultLine.className = 'result-line';
-
-    // ===== GOLD UPGRADE LOGIC =====
-    let goldMultiplier = 1;
-    let isGoldTriggered = false;
-    // Random chance between 1% and 30% to trigger gold mode
-    const goldChance = Math.random() * (30 - 1) + 1; 
-    if(Math.random() * 100 < goldChance) {
-        isGoldTriggered = true;
-        const multipliers = [1.2, 2, 4];
-        goldMultiplier = multipliers[Math.floor(Math.random() * multipliers.length)];
-        resultLine.textContent = `✨ ЗОЛОТОЙ АПГРЕЙД АКТИВИРОВАН! Множитель ×${goldMultiplier}! ✨`;
-        resultLine.className = 'result-line gold';
-    } else {
-        resultLine.textContent = `На кону: ${stakeLabel} → «${currentTarget.name}». Крутим...`;
-        resultLine.className = 'result-line';
-    }
 
     const eff = effectiveChance();
     const winDeg = 360 * (eff/100);
@@ -3149,7 +3054,6 @@
 
     const stakedIndicesAtSpinTime = [...selectedStakeIndices].sort((a,b) => a-b);
     const targetNameAtSpinTime = currentTarget.name;
-    const targetPriceAtSpinTime = currentTarget.price;
     const spentTopUp = creditTopUp;
     credits -= spentTopUp;
     let consolationPending = false;
@@ -3159,17 +3063,7 @@
       for(let k = stakedIndicesAtSpinTime.length - 1; k >= 1; k--){
         inventoryData.splice(stakedIndicesAtSpinTime[k], 1);
       }
-      // Apply Gold Multiplier if triggered
-      const finalPrice = Math.round(targetPriceAtSpinTime * goldMultiplier);
-      const upgradedItem = { ...currentTarget, id: uid(), price: finalPrice };
-      
-      // If it was a gold upgrade, modify the name to show it's special!
-      if(isGoldTriggered && goldMultiplier > 1) {
-          upgradedItem.name = `✨ Золотой ✨ ${upgradedItem.name}`;
-          upgradedItem.color = '#ffd23f'; // Make it Gold colored
-      }
-
-      inventoryData[firstIndex] = upgradedItem;
+      inventoryData[firstIndex] = { ...currentTarget, id: uid() };
       trackQuestProgress('win');
     } else {
       const wasBigLoss = items.some(it => ['rare','mythic','legendary'].includes(it.rarity));
@@ -3180,7 +3074,7 @@
     }
     selectedStakeIndices = [];
     selectedChance = null;
-    // currentTarget stays! We do NOT reset it.
+    currentTarget = null;
     habibiBuff = 0;
     creditTopUp = 0;
     saveAccountProgress();
@@ -3196,14 +3090,8 @@
       playChime(willWin);
 
       if(willWin){
-        let winText = `Апгрейд удался! ${stakeLabel} превратились в «${targetNameAtSpinTime}».`;
-        if(isGoldTriggered && goldMultiplier > 1) {
-            winText += ` ✨ Золотой множитель ×${goldMultiplier}! (Цена: ${fmtPrice(Math.round(targetPriceAtSpinTime * goldMultiplier))})`;
-            resultLine.className = 'result-line gold';
-        } else {
-            resultLine.className = 'result-line win';
-        }
-        resultLine.textContent = winText;
+        resultLine.textContent = `Апгрейд удался! ${stakeLabel} превратились в «${targetNameAtSpinTime}».`;
+        resultLine.className = 'result-line win';
         renderAll();
       } else {
         resultLine.textContent = `Не повезло. ${stakeLabel} потеряно.`;
@@ -3217,68 +3105,6 @@
       }
       renderAll();
     }, spinDurationMs + 100);
-  }
-
-  // ===== MYSTERY MODE LOGIC =====
-  function performMysteryUpgrade(){
-    if(spinning) return;
-    const items = currentStakeItems();
-    if(items.length === 0 || !selectedChance || !currentTarget) return;
-
-    spinning = true;
-    spinBtn.disabled = true;
-    mysteryBtn.disabled = true;
-
-    const stakeLabel = items.length === 1 ? `«${items[0].name}»` : `${items.length} предметов`;
-    resultLine.textContent = `🕵️ Мистери Мод активирован для ${stakeLabel}...`;
-    resultLine.className = 'result-line mystery';
-
-    // Mystery Multipliers: 0.1, 0.5, 1.5, 2.5, 5
-    const mysteryMultipliers = [0.1, 0.5, 1.5, 2.5, 5];
-    const multiplier = mysteryMultipliers[Math.floor(Math.random() * mysteryMultipliers.length)];
-    
-    const stakedIndicesAtSpinTime = [...selectedStakeIndices].sort((a,b) => a-b);
-    // We only apply this to the FIRST item in the stake to keep it simple
-    const firstIndex = stakedIndicesAtSpinTime[0];
-    const originalItem = inventoryData[firstIndex];
-    const newPrice = Math.round(originalItem.price * multiplier);
-
-    // Generate a completely random item of a random rarity to replace it
-    const randomRarity = rand(RARITIES).key;
-    let newItem = makeItem(randomRarity);
-    newItem.price = newPrice;
-    newItem.id = uid();
-
-    // Remove ALL other staked items (they get consumed in the mystery)
-    for(let k = stakedIndicesAtSpinTime.length - 1; k >= 1; k--){
-        inventoryData.splice(stakedIndicesAtSpinTime[k], 1);
-    }
-
-    // Replace the first staked item with the new mystery item
-    inventoryData[firstIndex] = newItem;
-
-    // Reset state
-    selectedStakeIndices = [];
-    selectedChance = null;
-    // currentTarget stays!
-    habibiBuff = 0;
-    creditTopUp = 0;
-    
-    // Play sounds
-    playChime(true);
-    
-    resultLine.textContent = `🕵️ Мистери Мод: ${stakeLabel} превратился в «${newItem.name}»! Множитель ×${multiplier}.`;
-    resultLine.className = 'result-line mystery';
-
-    spinning = false;
-    spinBtn.disabled = false;
-    mysteryBtn.disabled = false;
-    renderAll();
-  }
-
-  spinBtn.addEventListener('click', spin);
-  if(mysteryBtn) {
-      mysteryBtn.addEventListener('click', performMysteryUpgrade);
   }
 
   const caseModal = document.getElementById('caseModal');
@@ -3664,6 +3490,8 @@
     });
   }
 
+  spinBtn.addEventListener('click', spin);
+
   const authOverlay = document.getElementById('authOverlay');
   const gameWrap = document.getElementById('gameWrap');
   const loginForm = document.getElementById('loginForm');
@@ -3870,4 +3698,4 @@
 </script>
 
 </body>
-</html>
+  </html>
